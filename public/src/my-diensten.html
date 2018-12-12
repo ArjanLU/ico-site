@@ -1,0 +1,157 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="ico-diensten">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+
+      .follow-header{
+        background:var(--accent-color);
+      }
+
+    ol {
+   list-style: none;
+ }
+  li {
+   counter-increment: item;
+   margin-bottom: 5px;
+ }
+
+li:before {
+   margin-right: 10px;
+   content: counter(item);
+   color: var(--app-secondary-color);
+   width: 1.2em;
+   font-size:24px;
+ }
+    </style>
+
+<div class="follow-header">
+  <div class="follow-header-text">
+    <div>
+      Progressive web apps, <b>cross platform experience</b> voor tevreden gebruikers.
+    </div>
+    <div class="link"> <a name="cases" href="[[rootPath]]cases">Bekijk onze cases</a>
+      <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+    </div>
+  </div>
+</div>
+
+<div class="follow-content">
+  <div id="page-title">
+  <div class="subtitle">Onze</div>
+  <div class="title">
+    <h1>Specialiteit</h1>
+  </div>
+  </div>
+  <div class="content-block">
+    <div class="contact-cards">
+        <div class="card-big">
+            <h1>Trainingen</h1>
+            <p>Onze passie en kennis voor nieuwe technologieen delen wij graag. Iconica is in te huren voor trainingen in meer dan 25 programmeertalen. Heeft u interesse?</p>
+            <div class="link white-bg"> <a name="cases" href="[[rootPath]]contact">Wij komen graag in contact
+              <iron-icon icon="my-icons:arrow-forward"></iron-icon></a>
+            </div>
+          </div>
+      <div class="card-big">
+        <h1>Webapps</h1>
+        <p>(Progressive) webapps worden door de experts van Iconica geschreven met behulp van Polymer. Webapplicaties werken in de browser, zijn offline beschikbaar, maken gebruik van lokale opslag en kunnen geïmplementeerd worden op websites. </p>
+        <div class="link white-bg"> <a name="cases" href="[[rootPath]]contact">Wij komen graag in contact
+            <iron-icon icon="my-icons:arrow-forward"></iron-icon></a>
+          </div>
+      </div>
+      <div class="card-big">
+        <h1>Native apps</h1>
+        <p>Iconica bouwt native crossplatform mobile apps in Flutter. Dat beperkt de ontwikkelkosten, er wordt namelijk één app geschreven in één framework die native werkt op alle devices. </p>
+        <div class="link white-bg"> <a name="cases" href="[[rootPath]]contact">Wij komen graag in contact
+            <iron-icon icon="my-icons:arrow-forward"></iron-icon></a>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-block">
+    <div class="subtitle">Onze</div>
+    <div class="title">
+      <h1>Werkwijze</h1>
+    </div>
+    <ol>
+      <li> Concept </li>
+      <li> Wireframes </li>
+      <li> Design </li>
+      <li> Techniek</li>
+    </ol>
+  </div>
+<div id="page-footer">
+  <div class="content-block">
+    <div class="contact-cards">
+      <div class="card-big">
+        <h1>Ons werk</h1>
+        <div class="link"> <a name="cases" href="[[rootPath]]cases">Bekijk cases
+          <iron-icon icon="my-icons:arrow-forward"></iron-icon></a>
+        </div>
+      </div>
+      <div class="card-big">
+        <h1>Ons team</h1>
+        <div class="link"> <a name="cases" href="[[rootPath]]over-ons">Bekijk ons team
+          <iron-icon icon="my-icons:arrow-forward"></iron-icon></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="footer">
+  <!-- <div class="leave-message">
+    <div class="title">
+      <h2>Laat ons je terugbellen</h2>
+    </div>
+    <iron-form>
+      <paper-input label="Je naam" auto-validate pattern="[a-zA-Z]*" error-message="Bijvoorbeeld: Arjan Luemes"></paper-input>
+      <paper-input label="Je telefoonnummer" auto-validate pattern="[0-9]*" error-message="Bijvoorbeeld: 06 20 79 73 83"></paper-input>
+    </iron-form>
+    <div class="link"> <a name="contact" href="[[rootPath]]contact">Verzenden</a>
+      <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+    </div>
+  </div>
+  <div class="footer-social">
+    <iron-icon icon="social:twitter"></iron-icon>
+    <iron-icon icon="social:facebook"></iron-icon>
+    <iron-icon icon="social:instagram"></iron-icon>
+    <iron-icon icon="social:linkedin"></iron-icon>
+  </div> -->
+  <div class="leave-message" style="justify-content:flex-start">
+<div class="title">
+  <h2>Je kan ons bezoeken</h2>
+</div>
+<p style="color: #fff">Raadhuisstraat 25, 7001 EX te Doetinchem</p>
+</div>
+<div class="footer-social" style="margin-top: 0;">
+<div class="title">
+  <h2>Mail ons</h2>
+  <p><a href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Lekkere kop koffie">info@iconica.nl</a></p>
+</div>
+</template>
+
+<script>
+  class MyView2 extends Polymer.Element {
+    static get is() { return 'ico-diensten'; }
+  }
+
+  window.customElements.define(MyView2.is, MyView2);
+</script>
+</dom-module>

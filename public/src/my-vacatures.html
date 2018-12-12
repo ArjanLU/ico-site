@@ -1,0 +1,111 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="ico-vacatures">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      google-map {
+        height: 300px;
+        margin: 10px;
+      }
+    </style>
+
+    <div class="follow-header vacatures">
+      <div class="follow-header-text">
+        <div>
+          Wij zijn
+          <b>doorlopend</b> opzoek naar nieuw talent!
+        </div>
+        <div class="link">
+          <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Opensollicitatie">Stuur ons een opensollicitatie</a>
+          <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="follow-content">
+      <div class="content-block">
+        <div class="subtitle">Wil je aan de slag in een jong en dynamisch team? </div>
+        <div class="title">
+          <h1>Wij zijn momenteel opzoek naar:</h1>
+        </div>
+        <div class="contact-cards">
+          <div class="card-big">
+            <h1>Junior Developer</h1>
+            <p>Wil je aan de slag met de nieuwste technieken op gebied van Native en Mobile apps? Bij ons krijg je de kans en
+              de ruimte om veel te leren over onder andere Polymer en Flutter.</p>
+            <div class="link white-bg">
+              <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Junior Developer">Mail ons
+                <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-block">
+        <div class="subtitle">Je mag ook altijd even langskomen!</div>
+        <div class="title">
+          <h1>We zijn altijd in om een lekkere bak koffie te drinken</h1>
+        </div>
+        <p>Raadhuisstraat 25, 7001 EX te Doetinchem</p>
+      </div>
+    </div>
+    <div class="footer">
+      <!-- <div class="leave-message">
+    <div class="title">
+      <h2>Laat ons je terugbellen</h2>
+    </div>
+    <iron-form>
+      <paper-input label="Je naam" auto-validate pattern="[a-zA-Z]*" error-message="Bijvoorbeeld: Arjan Luemes"></paper-input>
+      <paper-input label="Je telefoonnummer" auto-validate pattern="[0-9]*" error-message="Bijvoorbeeld: 06 20 79 73 83"></paper-input>
+    </iron-form>
+    <div class="link"> <a name="contact" href="[[rootPath]]contact">Verzenden</a>
+      <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+    </div>
+  </div>
+  <div class="footer-social">
+    <iron-icon icon="social:twitter"></iron-icon>
+    <iron-icon icon="social:facebook"></iron-icon>
+    <iron-icon icon="social:instagram"></iron-icon>
+    <iron-icon icon="social:linkedin"></iron-icon>
+  </div> -->
+      <div class="leave-message" style="justify-content:flex-start">
+        <div class="title">
+          <h2>Je kan ons bezoeken</h2>
+        </div>
+        <p style="color: #fff">Raadhuisstraat 25, 7001 EX te Doetinchem</p>
+      </div>
+      <div class="footer-social" style="margin-top: 0;">
+        <div class="title">
+          <h2>Mail ons</h2>
+          <p>
+            <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Open Sollicitatie">info@iconica.nl</a>
+          </p>
+        </div>
+  </template>
+
+  <script>
+    class MyView6 extends Polymer.Element {
+      static get is() { return 'ico-vacatures'; }
+    }
+
+    window.customElements.define(MyView6.is, MyView6);
+  </script>
+
+
+</dom-module>

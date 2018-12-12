@@ -1,0 +1,103 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="ico-cases">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+<div class="follow-content">
+  <div class="subtitle">Wij houden van</div>
+  <div class="title">
+    <h1>Ons werk</h1>
+  </div>
+  <p>Naast onze kracht in designdriven-softwaredevelopment komt onze kracht in conceptontwikkeling goed tot uiting in onze cases.
+    Zo helpt het team van Iconica opdrachtgevers hun producten te verbeteren en is de SmartBadge een eigen ontwikkeld concept.</p>
+  <div>
+    <div class="portfolio-items">
+      <div class="portfolio-item-big">
+        <div class="content">
+          <div class="content-overlay"></div>
+          <div class="content-details fadeIn-top">
+            <h3>Smart Badge</h3>
+            <p>“Bezoekerservaring verbeteren door slimme toepassingen van unieke data”</p>
+            <div>
+              <a name="cases" href="[[rootPath]]smartbadge">
+                <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item-small">
+        <div class="content">
+          <div class="content-overlay"></div>
+          <div class="content-details fadeIn-top">
+            <h3>Interesse in een samenwerking?</h3>
+            <p>Neem snel contact op</p>
+            <a name="cases" href="[[rootPath]]contact">
+              <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+            </a>
+          </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="footer">
+  <!-- <div class="leave-message">
+    <div class="title">
+      <h2>Laat ons je terugbellen</h2>
+    </div>
+    <iron-form>
+      <paper-input label="Je naam" auto-validate pattern="[a-zA-Z]*" error-message="Bijvoorbeeld: Arjan Luemes"></paper-input>
+      <paper-input label="Je telefoonnummer" auto-validate pattern="[0-9]*" error-message="Bijvoorbeeld: 06 20 79 73 83"></paper-input>
+    </iron-form>
+    <div class="link"> <a name="contact" href="[[rootPath]]contact">Verzenden</a>
+      <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+    </div>
+  </div>
+  <div class="footer-social">
+    <iron-icon icon="social:twitter"></iron-icon>
+    <iron-icon icon="social:facebook"></iron-icon>
+    <iron-icon icon="social:instagram"></iron-icon>
+    <iron-icon icon="social:linkedin"></iron-icon>
+  </div> -->
+  <div class="leave-message" style="justify-content:flex-start">
+<div class="title">
+  <h2>Je kan ons bezoeken</h2>
+</div>
+<p style="color: #fff">Raadhuisstraat 25, 7001 EX te Doetinchem</p>
+</div>
+<div class="footer-social" style="margin-top: 0;">
+<div class="title">
+  <h2>Mail ons</h2>
+  <p><a href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Lekkere kop koffie">info@iconica.nl</a></p>
+</div>
+</template>
+
+<script>
+  class MyView4 extends Polymer.Element {
+    static get is() { return 'ico-cases'; }
+  }
+
+  window.customElements.define(MyView4.is, MyView4);
+</script>
+</dom-module>

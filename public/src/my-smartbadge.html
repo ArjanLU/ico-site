@@ -1,0 +1,129 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="ico-smartbadge">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        padding: 10px;
+      }
+    </style>
+
+<div class="case-specifiek">
+  <div id="case-navbar">
+    <div class="download-count">
+      <iron-icon icon="my-icons:file-download"></iron-icon>+500 downloads</div>
+    <div class="quote-case">
+      <iron-icon icon="my-icons:mood"></iron-icon>"Ik heb 4 waardevolle connecties gelegd met de SmartBadge"</div>
+    <!-- <div>
+      <iron-icon icon="my-icons:grid-on"></iron-icon>
+    </div>
+    <div class="case-navigation">
+      <iron-icon icon="my-icons:keyboard-arrow-left"></iron-icon>
+      <iron-icon icon="my-icons:keyboard-arrow-right"></iron-icon>
+    </div>-->
+  </div> 
+  <div id="case-header">
+  </div>
+  <div class="case-content">
+    <div class="case-intro">
+      <h1>SmartBadge</h1>
+      <p>Deze Progressive Web App kan ingezet worden voor gebruik op evenementen en congressen. De SmartBadge is ontwikkeld
+        met behulp van Polymer. De app biedt offline goede performance, dit is zeer wenselijk op locaties waar veel mensen
+        zijn en de internet verbinding niet stabiel is. </p>
+    </div>
+    <div class="case-split">
+      <div class="case-left">
+        <h1> Deliverables </h1>
+        <ol>
+          <li> Concept </li>
+          <li> Designs </li>
+          <li> Testing </li>
+          <li> Technieken </li>
+          <li> Implementatie </li>
+        </ol>
+      </div>
+      <div class="case-right">
+        <div>
+          <h1> De opdrachtgever </h1>
+          <p>Iconica</p>
+        </div>
+        <div>
+          <h1>Technieken </h1>
+          <p>Polymer</p>
+          <p>Firebase</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="case-explanation">
+    <div class="case-row">
+      <div class="case-left">
+        <h1>Concept</h1>
+        <p>Voor bezoekers biedt deze toepassing een overzicht van deelnemers en sessies. In de app zijn de aanwezigen te vinden, de agenda, een nieuwsoverzicht op basis van twittertechnologie, een plattegrond, gemaakte connecties. Er kunnen eveneens sessies beoordeeld worden. De app is nog volop in ontwikkeling en het is te verwachten dat er nog veel andere functies worden geïmplementeerd. De organisator kan waardevolle data verzamelen over de gemaakte verbindingen en sprekers te voorzien van beoordelingen die door de deelnemers zijn ingevuld. De deelnemer kan eveneens bij de sessies aangeven dat zij wensen om de gebruikte materialen achteraf willen ontvangen via mail. </p>
+        <p>Door deze functionaliteit is de motivatie voor het gebruik van de app tijdens maar ook na het evenement voor zowel de sprekers als deelnemers groot.  </p>
+      </div>
+      <div class="case-right">
+        <h1>Neem contact op</h1>
+        <div class="card-small">
+          <img style="width:100%" src="images/jeroen-profiel.jpg">
+<h1>Jeroen Salemink</h1>
+        <p><a href="tel:+31620797383">06 20 79 73 83</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer">
+  <!-- <div class="leave-message">
+    <div class="title">
+      <h2>Laat ons je terugbellen</h2>
+    </div>
+    <iron-form>
+      <paper-input label="Je naam" auto-validate pattern="[a-zA-Z]*" error-message="Bijvoorbeeld: Arjan Luemes"></paper-input>
+      <paper-input label="Je telefoonnummer" auto-validate pattern="[0-9]*" error-message="Bijvoorbeeld: 06 20 79 73 83"></paper-input>
+    </iron-form>
+    <div class="link"> <a name="contact" href="[[rootPath]]contact">Verzenden</a>
+      <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+    </div>
+  </div>
+  <div class="footer-social">
+    <iron-icon icon="social:twitter"></iron-icon>
+    <iron-icon icon="social:facebook"></iron-icon>
+    <iron-icon icon="social:instagram"></iron-icon>
+    <iron-icon icon="social:linkedin"></iron-icon>
+  </div> -->
+  <div class="leave-message" style="justify-content:flex-start">
+<div class="title">
+  <h2>Je kan ons bezoeken</h2>
+</div>
+<p style="color: #fff">Raadhuisstraat 25, 7001 EX te Doetinchem</p>
+</div>
+<div class="footer-social" style="margin-top: 0;">
+<div class="title">
+  <h2>Mail ons</h2>
+  <p><a href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Lekkere kop koffie">info@iconica.nl</a></p>
+</div>
+</template>
+
+<script>
+  class MyView6 extends Polymer.Element {
+    static get is() { return 'ico-smartbadge'; }
+  }
+
+  window.customElements.define(MyView6.is, MyView6);
+</script>
+</dom-module>

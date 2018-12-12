@@ -1,0 +1,106 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="ico-over-ons">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      .follow-header{
+        background:var(--accent-color);
+      }
+
+    </style>
+
+<div class="follow-header">
+  <div class="follow-header-text">
+    <div>
+      Met veel <b>plezier</b> en <b>passie</b> werken wij samen met onze klanten voor de beste online experience
+    </div>
+    <div class="link"> <a name="cases" href="[[rootPath]]cases">Bekijk onze cases</a>
+      <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+    </div>
+  </div>
+  
+</div>
+
+<div class="follow-content">
+  <div class="content-block">
+    <div class="subtitle">Online zijn de mogelijkheden grenzeloos</div>
+    <div class="title">
+      <h1>Over ons</h1>
+      <p>Ondanks dat Iconica een jong team heeft, heeft het team al vele jaren ervaring in de IT. Ons team is groeiende en we
+        zijn dan ook continu opzoek naar talentvolle IT’ers. Ons team bestaat momenteel uit:</p>
+    </div>
+
+  </div>
+  <div class="content-block">
+    <div class="contact-cards">
+      <div class="card-small">
+        <img style="width:100%" src="images/arjan-profiel.jpg">
+<h1>Arjan Luemes</h1>
+</div>
+<div class="card-small">
+  <img style="width:100%" src="images/jeroen-profiel.jpg">
+<h1>Jeroen Salemink</h1>
+</div>
+</div>
+<!--<div class="subtitle">Prettige samenwerking voor een topproduct</div>
+<div class="title">
+  <h1>Wij werken graag samen met</h1>
+</div>-->
+</div>
+</div>
+<div class="footer">
+  <!-- <div class="leave-message">
+    <div class="title">
+      <h2>Laat ons je terugbellen</h2>
+    </div>
+    <iron-form>
+      <paper-input label="Je naam" auto-validate pattern="[a-zA-Z]*" error-message="Bijvoorbeeld: Arjan Luemes"></paper-input>
+      <paper-input label="Je telefoonnummer" auto-validate pattern="[0-9]*" error-message="Bijvoorbeeld: 06 20 79 73 83"></paper-input>
+    </iron-form>
+    <div class="link"> <a name="contact" href="[[rootPath]]contact">Verzenden</a>
+      <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+    </div>
+  </div>
+  <div class="footer-social">
+    <iron-icon icon="social:twitter"></iron-icon>
+    <iron-icon icon="social:facebook"></iron-icon>
+    <iron-icon icon="social:instagram"></iron-icon>
+    <iron-icon icon="social:linkedin"></iron-icon>
+  </div> -->
+  <div class="leave-message" style="justify-content:flex-start">
+<div class="title">
+  <h2>Je kan ons bezoeken</h2>
+</div>
+<p style="color: #fff">Raadhuisstraat 25, 7001 EX te Doetinchem</p>
+</div>
+<div class="footer-social" style="margin-top: 0;">
+<div class="title">
+  <h2>Mail ons</h2>
+  <p><a href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Lekkere kop koffie">info@iconica.nl</a></p>
+</div>
+</template>
+
+<script>
+  class MyView3 extends Polymer.Element {
+    static get is() { return 'ico-over-ons'; }
+  }
+
+  window.customElements.define(MyView3.is, MyView3);
+</script>
+
+</dom-module>

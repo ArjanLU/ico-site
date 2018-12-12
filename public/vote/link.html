@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Page Title </title>
+        <meta charset="UTF-8">
+        <style>
+            /* Google Fonts */
+            @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+
+            /* Global */
+            html{
+                min-height: 100%;
+                overflow: hidden;
+            }
+
+            body{
+                height: calc(100vh - 8em);
+                padding: 4em;
+                color: rgba(255,255,255,.75);
+                font-family: 'Anonymous Pro', monospace;  
+                background-color: #191919;
+                -webkit-animation-name: example; 
+                -webkit-animation-duration: 15s; 
+                animation-name: example;
+                animation-duration: 15s;  
+            }
+
+            div{
+                height: calc(100vh - 8em);
+                padding: 4em;
+                margin-top: 25%;
+                background-image: url("./Anonymous.png");
+                background-repeat:no-repeat;
+                background-position: top;
+                -webkit-animation-name: anonymous; 
+                -webkit-animation-duration: 15s; 
+                animation-name: anonymous;
+                animation-duration: 15s;  
+            }
+
+            @-webkit-keyframes anonymous{
+                0% {opacity: 0}
+                42% {opacity: 0}
+                43% {opacity: 1}
+                44% {opacity: 0}
+                87% {opacity: 0}
+                100% {opacity: 1}
+            }
+
+            @keyframes anonymous{
+                0% {opacity: 0}
+                42% {opacity: 0}
+                43% {opacity: 1}
+                44% {opacity: 0}
+                87% {opacity: 0}
+                100% {opacity: 1}
+            }
+
+            @-webkit-keyframes example {
+                0% {background-color: #0D00FF;}
+                14% {background-color: #0D00FF;}
+                15% {background-color: #191919;}
+                16% {background-color: #0D00FF;}
+                28% {background-color: #0D00FF;}
+                30% {background-color: #191919;}
+                32% {background-color: #0D00FF;}
+                40% {background-color: #191919;}
+                42% {background-color: #0D00FF;}
+                48% {background-color: #191919;}
+                50% {background-color: #0D00FF;}
+                54% {background-color: #191919;}
+                56% {background-color: #0D00FF;}
+                58% {background-color: #191919;}
+                59% {background-color: #0D00FF;}
+                63% {background-color: #191919;}
+                64% {background-color: #0D00FF;}
+                70% {background-color: #191919;}
+                75% {background-color: #0D00FF;}
+                77% {background-color: #191919;}
+                78% {background-color: #0D00FF;}
+                79% {background-color: #191919;}
+                82% {background-color: #0D00FF;}
+                84% {background-color: #191919;}
+                86% {background-color: #0D00FF;}
+                88% {background-color: #191919;}
+                89% {background-color: #0D00FF;}
+                90% {background-color: #191919;}
+                92% {background-color: #0D00FF;}
+                94% {background-color: #191919;}
+                96% {background-color: #0D00FF;}
+                98% {background-color: #191919;}
+                99% {background-color: #0D00FF;}
+                100% {background-color: #191919;}
+            }
+
+            @keyframes example {
+                0% {background-color: #0D00FF;}
+                14% {background-color: #0D00FF;}
+                15% {background-color: #191919;}
+                16% {background-color: #0D00FF;}
+                28% {background-color: #0D00FF;}
+                30% {background-color: #191919;}
+                32% {background-color: #0D00FF;}
+                40% {background-color: #191919;}
+                42% {background-color: #0D00FF;}
+                48% {background-color: #191919;}
+                50% {background-color: #0D00FF;}
+                54% {background-color: #191919;}
+                56% {background-color: #0D00FF;}
+                58% {background-color: #191919;}
+                59% {background-color: #0D00FF;}
+                63% {background-color: #191919;}
+                64% {background-color: #0D00FF;}
+                70% {background-color: #191919;}
+                75% {background-color: #0D00FF;}
+                77% {background-color: #191919;}
+                78% {background-color: #0D00FF;}
+                79% {background-color: #191919;}
+                82% {background-color: #0D00FF;}
+                84% {background-color: #191919;}
+                86% {background-color: #0D00FF;}
+                88% {background-color: #191919;}
+                89% {background-color: #0D00FF;}
+                90% {background-color: #191919;}
+                92% {background-color: #0D00FF;}
+                94% {background-color: #191919;}
+                96% {background-color: #0D00FF;}
+                98% {background-color: #191919;}
+                99% {background-color: #0D00FF;}
+                100% {background-color: #191919;}
+            }
+
+            .line-1{
+                position: relative;
+                top: 40%;  
+                width: 24em;
+                margin: 0 auto;
+                border-right: 2px solid rgba(255, 255, 255, 0);
+                font-size: 220%;
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                transform: translateY(-50%);    
+            }
+
+            .line-2{
+                position: relative;
+                top: 45%;  
+                width: 24em;
+                margin: 0 auto;
+                border-right: 2px solid rgba(255, 255, 255, 0);
+                font-size: 220%;
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                transform: translateY(-50%);    
+            }
+
+            /* Animation line 1 */
+            .anim-typewriter1{
+                animation: typewriter1 4s steps(44) 1s 1 normal both,
+                        blinkTextCursor 500ms steps(44) infinite normal;
+                animation-delay:18s;
+            }
+
+            @keyframes typewriter1{
+                from{width: 0;}
+                to{width: 19em;}
+            }
+
+            @keyframes blinkTextCursor{
+                from{border-right-color: #f76c00;}
+                to{border-right-color: transparent;}
+            }
+
+            /* Animation line 2 */
+            .anim-typewriter2{
+                animation: typewriter2 1.5s steps(44) 1s 1 normal both,
+                blinkTextCursor 500ms steps(44) infinite normal;
+                -webkit-animation-delay: 24.7s;
+                animation-delay: 21.7s;
+            }
+
+            @keyframes typewriter2{
+                from{width: 0;}
+                to{width: 5.5em;}
+            }
+
+            @keyframes blinkTextCursor{
+                from{border-right-color:  #f76c00;}
+                to{border-right-color: transparent;}
+            }
+
+            
+
+        </style>
+    </head>
+
+    <body>
+        <div>
+            <p class="line-1 anim-typewriter1">Never trust a link on the internet.</p>
+            <p class="line-2 anim-typewriter2">BE WARNED!</p>
+        </div>
+    </body>
+</html>
