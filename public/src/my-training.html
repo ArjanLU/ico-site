@@ -14,11 +14,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="shared-styles.html">
 
 
-<dom-module id="ico-javascript-training">
+<dom-module id="ico-training">
   <template>
     <style include="shared-styles">
       :host {
         display: block;
+      }
+      .relatedlink {
+        color:rgba(66, 47, 89, 0.5);
+        text-decoration: none;
       }
 
       google-map {
@@ -28,9 +32,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
     <div class="follow-header vacatures">
       <div class="follow-header-text">
-        <div>
-          Javascript is een krachtig objectgëorienteerde programmeertaal die verweven zit in veelgebruike webframeworks.
-        </div>
+        <div inner-h-t-m-l="[[training.shortdescription]]"></div>
+      
       </div>
     </div>
     <div id="page">
@@ -43,13 +46,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   <div class="label">
                     Aantal dagen
                   </div>
-                  <div>2 (op aanvraag ook 5 dagen)</div>
+                  <div> [[training.duration]]</div>
                 </div>
                 <div class="keyword">
                   <div class="label">
                     Datum
                   </div>
-                  25 & 26 februari
+                  [[training.date]]
                 </div>
                 <div class="keyword">
                     <div class="label">
@@ -64,13 +67,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </div>
             <div class="home-text">
               <div class="text-field">
-                <div class="subtitle">Modern JavaScript</div>
+                <div class="subtitle">[[training.title]]</div>
                 <div class="title">
                   <h1>Wat houdt de training in?</h1>
                 </div>
-                <p class="home-text">Javascript is een objectgëorienteerde programmeertaal waarmee je interactieve webapplicaties (en native windows 8) kan ontwikkelen. Veel projecten worden voorzien van een front end waarbij gekozen wordt voor technologieën Javascript in combinatie met HTML5. In het toepassen van Javascript wordt vaak niet het gehele potentieel benut, het is een lastige taal om te begrijpen. Tijdens de training leer je alle ins en outs kennen.</p>
+                <p class="home-text">[[training.description]]</p>
               </div>
             </div>
+            <div class="home-text">
+                <div class="text-field">
+                  <div class="subtitle">Doelgroep</div>
+                  <div class="title">
+                    <h1>Voor wie is de training geschikt?</h1>
+                  </div>
+                  <p class="home-text">
+                    [[training.target]]
+                  </p>
+                </div>
+              </div>
+              <div class="home-text">
+                <div class="text-field">
+                  <div class="subtitle">Vereiste voorkennis</div>
+                  <div class="title">
+                    <h1>Wat moet je weten voor deze training?</h1>
+                  </div>
+                  <p class="home-text">
+                      [[training.prerequisites]]
+                  </p>
+                </div>
+              </div>
             <div class="text-field">
               <div class="subtitle">De training</div>
               <div class="title">
@@ -79,22 +104,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <p class="home-text">
                   <div class="list">
                       <ol>
-                        <li>ECMA script</li>
-                        <li>Variabelen</li>
-                        <li>Operatoren</li>
-                        <li>Arrays, functie en objecten</li>
-                        <li>Block Bindings</li>
-                        <li>Classes </li>
-                        <li>Proxies</li>
-                        <li>Reflections</li>
-                        <li>Modules</li>
-                        <li>Object georiënteerd programmeren</li>
-                        <li>Javascript in web</li>
+                        <template is="dom-repeat" items="[[training.subjects]]">
+                          <li>[[$index]][[item]]</li>
+                        </template>
                       </ol>
                     </div>
               </p>
-
             </div>
+
+            <div class="home-text">
+              <div class="text-field">
+                <div class="subtitle">Gerelateerde trainingen</div>
+                <!-- <div class="title">
+                  <h1>Wat zijn gerelateerde trainingen voor deze training?</h1>
+                </div> -->
+                <p class="home-text">
+                  <div style="display:flex;flex-wrap:wrap;width:100%;">
+                    <template is="dom-repeat" items="[[training.related]]">
+                      <div style="padding:20px;">
+                          <a class="relatedlink" href="[[item]]">[[item]]</a>
+                      </div>
+                    </template>
+                    </div>
+                </p>
+              </div>
+            </div>
+
             <div class="text-field">
                 <div class="content-block">
                     <div class="subtitle">Heb je vragen? </div>
@@ -170,11 +205,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    class MyView9 extends Polymer.Element {
-      static get is() { return 'ico-javascript-training'; }
+    class IcoTraining extends Polymer.Element {
+      static get is() { return 'ico-training'; }
+      static get properties() {
+        return {
+          training:{type:Object, value:{}, notify:true}
+        };
+      }
     }
 
-    window.customElements.define(MyView9.is, MyView9);
+    window.customElements.define(IcoTraining.is, IcoTraining);
   </script>
 
 
