@@ -17,6 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host {
         display: block;
       }
+      .home-text { margin-left:25px;}
     </style>
 <div class="home-header">
   <div class="header-text">
@@ -34,17 +35,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </div>
 </div>
 <div id="page">
-  <div class="split-content">
-    <div class="home-left">
-    </div>
-    <div class="home-right">
+  
       <div class="home-text">
         <div class="text-field">
           <div class="subtitle">Een complementair team</div>
           <div class="title">
             <h1>Gedreven door passie en vertouwen...</h1>
           </div>
-          <p class="home-text">Het team van Iconica is het resultaat van diverse experts met verschillende achtergronden, gedeelde passie en ambitie
+          <p>Het team van Iconica is het resultaat van diverse experts met verschillende achtergronden, gedeelde passie en ambitie
             die een app wilden bouwen. Onze passie voor conceptontwikkeling, UX/UI-design en nieuwe technieken zijn de perfecte
             basis om onze ambitie waar te maken: organisaties efficiënter laten handelen middels de nieuwste ICT-technieken.</p>
           <div class="inverse-link"> <a name="contact" href="[[rootPath]]contact">Contacteer ons</a>
@@ -52,44 +50,48 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </div>
         </div>
       </div>
-      <div class="text-field">
+
+      <div class="home-text">
+        <div class="text-field">
         <div class="subtitle">met plezier en een nuchtere kijk</div>
         <div class="title">
           <h1>bouwen wij state-of-the-art-software…</h1>
         </div>
-        <p class="home-text">Nieuwe ontwikkelingen op de markt worden vroeg omarmt. Sterker nog; Iconica deelt zijn ervaringen en kennis in de
+        <p>Nieuwe ontwikkelingen op de markt worden vroeg omarmt. Sterker nog; Iconica deelt zijn ervaringen en kennis in de
           communities rondom nieuwe ontwikkelingen. Door generieke componenten beschikbaar te stellen aan de community, draagt
           Iconica zijn steentje bij aan de ontwikkeling van nieuwe programmeertalen.</p>
         <div class="inverse-link"> <a name="contact" href="[[rootPath]]contact">Contacteer ons</a>
           <iron-icon icon="my-icons:arrow-forward"></iron-icon>
         </div>
       </div>
-      <div class="text-field">
+      </div>
+      <div class="home-text">
+          <div class="text-field">
         <div class="subtitle">meer dan 30 jaar ervaring</div>
         <div class="title">
           <h1>dat garant staat voor de hoogste gebruiksvriendelijkheid…</h1>
         </div>
-        <p class="home-text">Door zowel met de opdrachtgever als met de eindgebruiker in nauw contact te staan, wordt de acceptatie van de software
+        <p>Door zowel met de opdrachtgever als met de eindgebruiker in nauw contact te staan, wordt de acceptatie van de software
           vergroot. Want als software echt goed functioneert en gebruiksvriendelijk is, wil je de software gebruiken en hoeft
           het je niet opgedrongen te worden. </p>
         <div class="inverse-link"> <a name="contact" href="[[rootPath]]contact">Contacteer ons</a>
           <iron-icon icon="my-icons:arrow-forward"></iron-icon>
         </div>
       </div>
-      <div class="text-field">
+      </div>
+
+      <div class="home-text">
         <div class="subtitle">geduld en kennis</div>
         <div class="title">
           <h1>en voor onvergetelijke digitale ervaringen...</h1>
         </div>
-        <p class="home-text">Juist door onze designdriven-werkwijze wordt de opdrachtgever en de eindgebruiker beter betrokken bij het proces.
+        <p>Juist door onze designdriven-werkwijze wordt de opdrachtgever en de eindgebruiker beter betrokken bij het proces.
           Dat zorgt voor optimaal en betaalbaar resultaat. Een wijziging doorvoeren tijdens de design-fase is immers makkelijker
           dan wanneer er al veel uren zijn gemaakt voor het schrijven van de software.</p>
         <div class="inverse-link"> <a name="contact" href="[[rootPath]]contact">Contacteer ons</a>
           <iron-icon icon="my-icons:arrow-forward"></iron-icon>
         </div>
       </div>
-    </div>
-  </div>
 </div>
 
 <div class="follow-content">
@@ -152,38 +154,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 </div>
 </div>
 </div>
-<div class="footer">
-  <!-- <div class="leave-message">
-    <div class="title">
-      <h2>Laat ons je terugbellen</h2>
-    </div>
-    <iron-form>
-      <paper-input label="Je naam" auto-validate pattern="[a-zA-Z]*" error-message="Bijvoorbeeld: Arjan Luemes"></paper-input>
-      <paper-input label="Je telefoonnummer" auto-validate pattern="[0-9]*" error-message="Bijvoorbeeld: 06 20 79 73 83"></paper-input>
-    </iron-form>
-    <div class="link"> <a name="contact" href="[[rootPath]]contact">Verzenden</a>
-      <iron-icon icon="my-icons:arrow-forward"></iron-icon>
-    </div>
-  </div>
-  <div class="footer-social">
-    <iron-icon icon="social:twitter"></iron-icon>
-    <iron-icon icon="social:facebook"></iron-icon>
-    <iron-icon icon="social:instagram"></iron-icon>
-    <iron-icon icon="social:linkedin"></iron-icon>
-  </div> -->
-  <div class="leave-message" style="justify-content:flex-start">
-<div class="title">
-  <h2>Je kan ons bezoeken</h2>
-</div>
-<p style="color: #fff">Raadhuisstraat 25, 7001 EX te Doetinchem</p>
-</div>
-<div class="footer-social" style="margin-top: 0;">
-<div class="title">
-  <h2>Mail ons</h2>
-  <p><a href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Lekkere kop koffie">info@iconica.nl</a></p>
-</div>
-</div>
-</div>
+<ico-footer></ico-footer>
 
 </template>
 
