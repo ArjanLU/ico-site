@@ -20,6 +20,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host {
         display: block;
       }
+      .label { font-size:10px;}
+      .cell { font-size:12px;}
+      .keyword { font-size:12px;}
       .relatedlink {
         color:rgba(66, 47, 89, 0.5);
         text-decoration: none;
@@ -46,19 +49,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   <div class="label">
                     Aantal dagen
                   </div>
-                  <div> [[training.duration]]</div>
+                  <div class="cell"> [[training.duration]]</div>
                 </div>
                 <div class="keyword">
                   <div class="label">
                     Datum
-                  </div>
+                  </div class="cell">
                   [[training.date]]
                 </div>
                 <div class="keyword">
                     <div class="label">
                         Garantie
                       </div>
-                      Onze trainingen starten altijd!</div>
+                      Onze trainingen starten altijd!
+                </div>
                 <div class="keyword">
                   <div class="inverse-link"> <a name="contact" href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Aanmelding Flutter training">Meld je aan</a>
                     <iron-icon icon="my-icons:arrow-forward"></iron-icon>
@@ -105,7 +109,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   <div class="list">
                       <ol>
                         <template is="dom-repeat" items="[[training.subjects]]">
-                          <li>[[$index]][[item]]</li>
+                          <li style="margin-right:20px">[[$index]][[item]]</li>
                         </template>
                       </ol>
                     </div>
