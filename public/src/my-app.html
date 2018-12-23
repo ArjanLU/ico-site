@@ -25,26 +25,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/google-map/google-map.html">
 <link rel="import" href="../bower_components/iron-form/iron-form.html">
-<link rel="import" href="my-training-data.html">
-<link rel="import" href="my-training.html">
-<link rel="import" href="my-icons.html">
+<link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="./my-training-data.html">
+<link rel="import" href="./my-training.html">
+<link rel="import" href="./my-icons.html">
+<link rel="import" href="/src/my-home.html">
+<link rel="import" href="/src/my-cases.html">
+<link rel="import" href="/src/my-trainingpage.html">
+<link rel="import" href="/src/my-traininglist.html">
+<link rel="import" href="/src/my-diensten.html">
+<link rel="import" href="/src/my-over-ons.html">
+<link rel="import" href="/src/my-contact.html">
+<link rel="import" href="/src/my-vacatures.html">
+<link rel="import" href="/src/my-smartbadge.html">
+<link rel="import" href="/src/my-view404.html">
 
 <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
 
-<link rel="lazy-import" href="my-ico-home.html">
-<link rel="lazy-import" href="my-ico-cases.html">
-<link rel="lazy-import" href="my-ico-diensten.html">
-<link rel="lazy-import" href="my-ico-over-ons.html">
-<link rel="lazy-import" href="my-ico-contact.html">
-<link rel="lazy-import" href="my-ico-vacatures.html">
-<link rel="lazy-import" href="my-ico-smartbadge.html">
-<link rel="lazy-import" href="my-ico-flutter-training.html">
-<link rel="lazy-import" href="my-ico-android-training.html">
-<link rel="lazy-import" href="my-ico-html-css-training.html">
-<link rel="lazy-import" href="my-ico-ios-training.html">
-<link rel="lazy-import" href="my-ico-javascript-training.html">
-<link rel="lazy-import" href="my-ico-reactjs-training.html">
-<link rel="lazy-import" href="my-view404.html">
+
 
 <dom-module id="my-app">
   <template>
@@ -92,6 +90,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: black;
         font-weight: bold;
       }
+
+      .mainmenu {
+        width:100%;
+        display:flex;
+        justify-content: center
+      }
+      .mainmenu a {
+        margin:20px;
+        color:black;
+        text-decoration: none;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-variant: small-caps;
+      }
     </style>
 
 <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
@@ -106,15 +117,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
       <a name="home" href="[[rootPath]]home">Home</a>
       <a name="diensten" href="[[rootPath]]diensten">Diensten</a>
+      <a name="trainingen" href="[[rootPath]]trainingen">Training</a>
       <a name="cases" href="[[rootPath]]cases">Cases</a>
       <a name="over-ons" href="[[rootPath]]over-ons">Over ons</a>
       <div style="display:flex; flex-direction:row; align-items: center;"><a name="vacatures" href="[[rootPath]]vacatures">Vacatures</a><iron-icon icon="my-icons:coffee"></iron-icon></div>
       <a name="contact" href="[[rootPath]]contact">Contact</a>
-      <br>
-      <app-toolbar>Trainingen</app-toolbar>
-      <template is="dom-repeat" items="[[trainingen]]">
-          <a name="[[item.name]]" href="[[rootPath]][[item.name]]">[[item.title]]</div>
-      </template>
     </iron-selector>
   </app-drawer>
 
@@ -122,16 +129,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <app-header-layout has-scrolling-region id="header">
     <app-header  slot="header" condenses reveals effects="waterfall">
       <app-toolbar>
-        <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-        <a name="home" href="[[rootPath]]home"><div main-title><img style="height:35px;" src="images/logo-iconica.svg"> </div>
+        <template is="dom-if" if="[[smallscreen]]">
+          <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
+        </template>
+        <div style="display:flex;width:100%;justify-content:center;">
+          <a name="home" href="[[rootPath]]home">
+            <div main-title>
+              <img style="height:35px;" src="images/logo-iconica.svg" /> 
+            </div>
+          </a>
+        </div>
         <a name="contact" href="[[rootPath]]contact"><iron-icon icon="my-icons:coffee"></iron-icon> </a>
       </app-toolbar>
+      <template is="dom-if" if="[[!smallscreen]]">
+         <div class="mainmenu">
+           <a href="[[rootPath]]diensten">diensten</a>
+           <a href="[[rootPath]]trainingen">training</a>
+           <a href="[[rootPath]]cases">cases</a>
+           <a href="[[rootPath]]contact">contact</a>
+         </div>
+      </template>
     </app-header>
 
-    <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="vew404" role="main" scroll-target="document">
-      <template is="dom-repeat" items="[[trainingen]]">
-          <ico-training name$="[[item.name]]" training="[[item]]"></div>
-      </template>
+    
+    <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main" scroll-target="document">
+     
+      <ico-trainingpage name="trainingen"></ico-trainingpage>
+      <ico-traininglist name="traininglist" trainingen="[[trainingen]]"></ico-traininglist>
       <ico-home name="home"></ico-home>
       <ico-diensten name="diensten"></ico-diensten>
       <ico-cases name="cases"></ico-cases>
@@ -140,11 +164,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <ico-vacatures name="vacatures"></ico-vacatures>
       <my-view404 name="view404"></my-view404>
       <ico-smartbadge name="smartbadge"> </ico-smartbadge>
+      <template is="dom-repeat" items="[[trainingen]]" > 
+          <ico-training name$="[[item.name]]" training="[[item]]"></div>
+      </template>
     </iron-pages>
+    
   </app-header-layout>
 </app-drawer-layout>
 
 <ico-trainingdata trainingen="{{trainingen}}"></ico-trainingdata>
+<iron-media-query query="(max-width:600px)" query-matches="{{smallscreen}}"></iron-media-query>
+   
 </template>
 
 <script>

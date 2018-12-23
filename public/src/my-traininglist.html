@@ -11,12 +11,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="ico-smartbadge">
+<dom-module id="ico-traininglist">
   <template>
     <style include="shared-styles">
       :host {
         display: block;
         padding: 10px;
+      }
+      .relatedlink {
+        color:rgba(66, 47, 89, 0.5);
+        text-decoration: none;
+      }
+      .trainingen {
+        display:flex;
+        flex-wrap:wrap;
+      }
+      .training {
+        padding:10px;
+        margin:10px;
+        max-width:250px;
+      }
+      .training p {
+        line-height:1.2em; font-size:14px;
       }
     </style>
 
@@ -38,53 +54,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </div>
   <div class="case-content">
     <div class="case-intro">
-      <h1>SmartBadge</h1>
-      <p>Deze Progressive Web App kan ingezet worden voor gebruik op evenementen en congressen. De SmartBadge is ontwikkeld
-        met behulp van Polymer. De app biedt offline goede performance, dit is zeer wenselijk op locaties waar veel mensen
-        zijn en de internet verbinding niet stabiel is. </p>
+      <h1>Trainingen</h1>
+      <p>We bieden de onderstaande trainingen</p>
     </div>
-    <div class="case-split">
-      <div class="case-left">
-        <h1> Deliverables </h1>
-        <ol>
-          <li> Concept </li>
-          <li> Designs </li>
-          <li> Testing </li>
-          <li> Technieken </li>
-          <li> Implementatie </li>
-        </ol>
+    <div>
+      <div class="trainingen">
+        <template is="dom-repeat" items="[[trainingen]]">
+          <div class="training">
+            <a class="relatedlink" href="[[item.name]]">[[item.title]]</a>
+            <p>[[item.shortdescription]]</p>
+            <p style="font-style:italic;font-size:12px;">Doetinchem, [[item.date]]</p>
+          </div>
+        </template>
       </div>
-      <div class="case-right">
-        <div>
-          <h1> De opdrachtgever </h1>
-          <p>Iconica</p>
-        </div>
-        <div>
-          <h1>Technieken </h1>
-          <p>Polymer</p>
-          <p>Firebase</p>
-        </div>
-      </div>
+
     </div>
   </div>
-  <div class="case-explanation">
-    <div class="case-row">
-      <div class="case-left">
-        <h1>Concept</h1>
-        <p>Voor bezoekers biedt deze toepassing een overzicht van deelnemers en sessies. In de app zijn de aanwezigen te vinden, de agenda, een nieuwsoverzicht op basis van twittertechnologie, een plattegrond, gemaakte connecties. Er kunnen eveneens sessies beoordeeld worden. De app is nog volop in ontwikkeling en het is te verwachten dat er nog veel andere functies worden geïmplementeerd. De organisator kan waardevolle data verzamelen over de gemaakte verbindingen en sprekers te voorzien van beoordelingen die door de deelnemers zijn ingevuld. De deelnemer kan eveneens bij de sessies aangeven dat zij wensen om de gebruikte materialen achteraf willen ontvangen via mail. </p>
-        <p>Door deze functionaliteit is de motivatie voor het gebruik van de app tijdens maar ook na het evenement voor zowel de sprekers als deelnemers groot.  </p>
-      </div>
-      <div class="case-right">
-        <h1>Neem contact op</h1>
-        <div class="card-small">
-          <img style="width:100%" src="images/jeroen-profiel.jpg">
-<h1>Jeroen Salemink</h1>
-        <p><a href="tel:+31620797383">06 20 79 73 83</a></p>
-</div>
-</div>
-</div>
-</div>
-</div>
 </div>
 
 <div class="footer">
@@ -120,10 +105,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 </template>
 
 <script>
-  class MyView16 extends Polymer.Element {
-    static get is() { return 'ico-smartbadge'; }
+  class IcoTrainingList extends Polymer.Element {
+    static get is() { return 'ico-traininglist'; }
+    static get properties() {
+      return {
+        trainingen:{type:Array, value:[]}
+      }
+    }
   }
 
-  window.customElements.define(MyView16.is, MyView16);
+  window.customElements.define(IcoTrainingList.is, IcoTrainingList);
 </script>
 </dom-module>
