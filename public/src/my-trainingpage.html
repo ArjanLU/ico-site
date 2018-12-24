@@ -1,0 +1,53 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="ico-trainingpage">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+    </style>
+
+<div class="follow-header" style="background-color:#455a64">
+    <div class="follow-header-text">
+      <div>
+        Trainingen in <b>cutting edge technologies</b>! Van beginners tot gevorderden.
+      </div>
+      <div class="link"> <a name="cases" href="[[rootPath]]traininglist">Bekijk onze trainingen</a>
+        <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+      </div>
+    </div>
+  </div>
+  
+<div class="follow-content" style="margin-bottom:100px">
+    <div class="content-block">
+      <div class="subtitle">Wij staan achter</div>
+      <div class="title">
+          <h1>Onze trainingen</h1>
+        <p>Wij geven trainingen op het gebied van alles wat te maken heeft met ons werk. We verzorgen trainingen in alle lagen van de software development stack. Onze trainers zijn gekwalificeerd, gecertificeerd en wij beschikken over ruim 12 jaar ervaring op didactisch vlak. Net als onze andere diensten, zijn onze training van hoog niveau. 
+            Naast een garantie dat de training bij inschrijvingen per definitie doorgaat, geven wij ook unieke 1-daagse verkorte trainingen om snel up to date te raken met de huidige ontwikkelingen op de gebieden waar we werkzaam zijn.</p>
+      </div>
+    </div>
+</div>
+<ico-footer></ico-footer>
+</template>
+
+<script>
+  class IcoTrainingPage extends Polymer.Element {
+    static get is() { return 'ico-trainingpage'; }
+  }
+
+  window.customElements.define(IcoTrainingPage.is, IcoTrainingPage);
+</script>
+</dom-module>

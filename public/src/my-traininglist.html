@@ -1,0 +1,91 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="ico-traininglist">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        padding: 10px;
+      }
+      .relatedlink {
+        color:rgba(66, 47, 89, 0.5);
+        text-decoration: none;
+      }
+      .trainingen {
+        display:flex;
+        flex-wrap:wrap;
+      }
+      .training {
+        padding:10px;
+        margin:10px;
+        max-width:250px;
+        border-bottom:1px dotted silver;
+      }
+      .training p {
+        line-height:1.2em; font-size:14px;
+      }
+    </style>
+
+<div class="case-specifiek">
+  <div id="case-navbar">
+    <div class="download-count">
+      <iron-icon icon="my-icons:file-download"></iron-icon>+500 downloads</div>
+    <div class="quote-case">
+      <iron-icon icon="my-icons:mood"></iron-icon>"Ik heb 4 waardevolle connecties gelegd met de SmartBadge"</div>
+    <!-- <div>
+      <iron-icon icon="my-icons:grid-on"></iron-icon>
+    </div>
+    <div class="case-navigation">
+      <iron-icon icon="my-icons:keyboard-arrow-left"></iron-icon>
+      <iron-icon icon="my-icons:keyboard-arrow-right"></iron-icon>
+    </div>-->
+  </div> 
+  <div id="case-header">
+  </div>
+  <div class="case-content">
+    <div class="case-intro">
+      <h1>Trainingen</h1>
+      <p>We bieden de onderstaande trainingen</p>
+    </div>
+    <div>
+      <div class="trainingen">
+        <template is="dom-repeat" items="[[trainingen]]">
+          <div class="training">
+            <a class="relatedlink" href="[[item.name]]">[[item.title]]</a>
+            <p>[[item.shortdescription]]</p>
+            <p style="font-style:italic;font-size:12px;">Doetinchem, [[item.date]]</p>
+          </div>
+        </template>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<ico-footer></ico-footer>
+</template>
+
+<script>
+  class IcoTrainingList extends Polymer.Element {
+    static get is() { return 'ico-traininglist'; }
+    static get properties() {
+      return {
+        trainingen:{type:Array, value:[]}
+      }
+    }
+  }
+
+  window.customElements.define(IcoTrainingList.is, IcoTrainingList);
+</script>
+</dom-module>

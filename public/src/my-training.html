@@ -20,9 +20,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host {
         display: block;
       }
+      .label { font-size:10px;}
+      .cell { font-size:12px;}
+      .keyword { font-size:12px;}
       .relatedlink {
         color:rgba(66, 47, 89, 0.5);
         text-decoration: none;
+      }
+
+      .signup {
+        background-color:var(--app-primary-color);
+        padding:10px;
+        width:180px;
+        text-align:center;
+        border-radius: 5px;
+        box-shadow:5px 5px 5px #888;
+        color:white;
+        margin:10px;
+        font-variant:small-caps;
+        font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+      }
+
+      .home-text {
+        margin-left:25px;
       }
 
       google-map {
@@ -32,35 +52,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
     <div class="follow-header vacatures">
       <div class="follow-header-text">
-        <div inner-h-t-m-l="[[training.shortdescription]]"></div>
+        <div style="font-size:3.5vw" inner-h-t-m-l="[[training.shortdescription]]"></div>
       
       </div>
     </div>
     <div id="page">
-        <div class="split-content">
-          <div class="training-left">
-          </div>
-          <div class="home-right">
+        
+          <div>
               <div class="summary">
                 <div class="keyword">
                   <div class="label">
                     Aantal dagen
                   </div>
-                  <div> [[training.duration]]</div>
+                  <div class="cell"> [[training.duration]]</div>
                 </div>
                 <div class="keyword">
                   <div class="label">
                     Datum
-                  </div>
+                  </div class="cell">
                   [[training.date]]
                 </div>
                 <div class="keyword">
                     <div class="label">
                         Garantie
                       </div>
-                      Onze trainingen starten altijd!</div>
+                      Onze trainingen starten altijd!
+                </div>
                 <div class="keyword">
-                  <div class="inverse-link"> <a name="contact" href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Aanmelding Flutter training">Meld je aan</a>
+                  <div class="inverse-link"> <a name="contact" href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Schrijf me in voor de [[training.title]] training">Meld je aan</a>
                     <iron-icon icon="my-icons:arrow-forward"></iron-icon>
                   </div>
                 </div>
@@ -71,7 +90,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <div class="title">
                   <h1>Wat houdt de training in?</h1>
                 </div>
-                <p class="home-text">[[training.description]]</p>
+                <p>[[training.description]]</p>
               </div>
             </div>
             <div class="home-text">
@@ -80,7 +99,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   <div class="title">
                     <h1>Voor wie is de training geschikt?</h1>
                   </div>
-                  <p class="home-text">
+                  <p>
                     [[training.target]]
                   </p>
                 </div>
@@ -91,25 +110,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   <div class="title">
                     <h1>Wat moet je weten voor deze training?</h1>
                   </div>
-                  <p class="home-text">
+                  <p>
                       [[training.prerequisites]]
                   </p>
                 </div>
               </div>
-            <div class="text-field">
+            <div class="home-text">
               <div class="subtitle">De training</div>
               <div class="title">
                 <h1>Wat ga je leren?</h1>
               </div>
-              <p class="home-text">
+              <p>
                   <div class="list">
                       <ol>
                         <template is="dom-repeat" items="[[training.subjects]]">
-                          <li>[[$index]][[item]]</li>
+                          <li style="margin-right:20px">[[$index]][[item]]</li>
                         </template>
                       </ol>
                     </div>
               </p>
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;width:500px;margin-left:25px;">
+              <div class="signup"> 
+                  <a name="contact" href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=In wil infirmatie over de training [[training.title]]">Stuur mij informatie</a>
+                </div>
+
+              <div class="signup"> 
+                <a name="contact" href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Schrijf me in voor de [[training.title]] training">Schrijf mij in</a>
+              </div>
             </div>
 
             <div class="home-text">
@@ -130,7 +159,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </div>
             </div>
 
-            <div class="text-field">
+            <div class="home-text">
                 <div class="content-block">
                     <div class="subtitle">Heb je vragen? </div>
                     <div class="title">
@@ -170,38 +199,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div>
         </div>
       </div>
-    <div class="footer">
-      <!-- <div class="leave-message">
-    <div class="title">
-      <h2>Laat ons je terugbellen</h2>
-    </div>
-    <iron-form>
-      <paper-input label="Je naam" auto-validate pattern="[a-zA-Z]*" error-message="Bijvoorbeeld: Arjan Luemes"></paper-input>
-      <paper-input label="Je telefoonnummer" auto-validate pattern="[0-9]*" error-message="Bijvoorbeeld: 06 20 79 73 83"></paper-input>
-    </iron-form>
-    <div class="link"> <a name="contact" href="[[rootPath]]contact">Verzenden</a>
-      <iron-icon icon="my-icons:arrow-forward"></iron-icon>
-    </div>
-  </div>
-  <div class="footer-social">
-    <iron-icon icon="social:twitter"></iron-icon>
-    <iron-icon icon="social:facebook"></iron-icon>
-    <iron-icon icon="social:instagram"></iron-icon>
-    <iron-icon icon="social:linkedin"></iron-icon>
-  </div> -->
-      <div class="leave-message" style="justify-content:flex-start">
-        <div class="title">
-          <h2>Je kan ons bezoeken</h2>
-        </div>
-        <p style="color: #fff">Raadhuisstraat 25, 7001 EX te Doetinchem</p>
-      </div>
-      <div class="footer-social" style="margin-top: 0;">
-        <div class="title">
-          <h2>Mail ons</h2>
-          <p>
-            <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Open Sollicitatie">info@iconica.nl</a>
-          </p>
-        </div>
+      <ico-footer></ico-footer>
   </template>
 
   <script>
