@@ -18,60 +18,64 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
 
-      .follow-header{
-        background:var(--accent-color);
+      .follow-header {
+        background: var(--accent-color);
       }
-
     </style>
 
-<div class="follow-header">
-  <div class="follow-header-text">
-    <div>
-      Met veel <b>plezier</b> en <b>passie</b> werken wij samen met onze klanten voor de beste online experience
-    </div>
-    <div class="link"> <a name="cases" href="[[rootPath]]cases">Bekijk onze cases</a>
-      <iron-icon icon="my-icons:arrow-forward"></iron-icon>
-    </div>
-  </div>
-  
-</div>
+    <div class="follow-header">
+      <div class="follow-header-text">
+        <div>
+          Met veel <b>plezier</b> en <b>passie</b> werken wij samen met onze klanten voor de beste online experience
+        </div>
+        <div class="link"> <a name="cases" href="[[rootPath]]cases">Bekijk onze cases</a>
+          <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+        </div>
+      </div>
 
-<div class="follow-content">
-  <div class="content-block">
-    <div class="subtitle">Online zijn de mogelijkheden grenzeloos</div>
-    <div class="title">
-      <h1>Over ons</h1>
-      <p>Ondanks dat Iconica een jong team heeft, heeft het team al vele jaren ervaring in de IT. Ons team is groeiende en we
-        zijn dan ook continu opzoek naar talentvolle IT’ers.</p>
     </div>
 
-  </div>
-  <div class="content-block">
-    <div class="contact-cards">
-      <div class="card-small">
-        <img style="width:100%" src="images/arjan-profiel.jpg">
-<h1>Arjan Luemes</h1>
-</div>
-<div class="card-small">
-  <img style="width:100%" src="images/jeroen-profiel.jpg">
-<h1>Jeroen Salemink</h1>
-</div>
-</div>
-<!--<div class="subtitle">Prettige samenwerking voor een topproduct</div>
+    <div class="follow-content">
+      <div class="content-block">
+        <div class="subtitle">Online zijn de mogelijkheden grenzeloos</div>
+        <div class="title">
+          <h1>Over ons</h1>
+          <p>Ondanks dat Iconica een jong team heeft, heeft het team al vele jaren ervaring in de IT. Ons team is
+            groeiende en we
+            zijn dan ook continu opzoek naar talentvolle IT’ers.</p>
+        </div>
+
+      </div>
+      <div class="content-block">
+        <div class="contact-cards">
+          <div class="card-small">
+            <img style="width:100%" src="images/arjan-profiel.jpg">
+            <h3>Arjan Luemes</h3>
+          </div>
+          <div class="card-small">
+            <img style="width:100%" src="images/jeroen-profiel.jpg">
+            <h3>Jeroen Salemink</h3>
+          </div>
+          <div class="card-small">
+            <img style="width:100%" src="images/jeroen-profiel.jpg">
+            <h3>John Gorter</h3>
+          </div>
+        </div>
+        <!--<div class="subtitle">Prettige samenwerking voor een topproduct</div>
 <div class="title">
   <h1>Wij werken graag samen met</h1>
 </div>-->
-</div>
-</div>
-<ico-footer></ico-footer>
-</template>
+      </div>
+    </div>
+    <ico-footer></ico-footer>
+  </template>
 
-<script>
-  class MyView3 extends Polymer.Element {
-    static get is() { return 'ico-over-ons'; }
-  }
+  <script>
+    class MyView3 extends Polymer.Element {
+      static get is() { return 'ico-over-ons'; }
+    }
 
-  window.customElements.define(MyView3.is, MyView3);
-</script>
+    window.customElements.define(MyView3.is, MyView3);
+  </script>
 
 </dom-module>

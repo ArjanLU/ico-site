@@ -16,76 +16,82 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
-        padding: 10px;
       }
+
       .relatedlink {
-        color:rgba(66, 47, 89, 0.5);
+        color: var(--primary-text-color);
         text-decoration: none;
       }
+
+      .relatedlink:hover {
+        text-decoration: none
+      }
+
       .trainingen {
-        display:flex;
-        flex-wrap:wrap;
+        display: flex;
+        flex-wrap: wrap;
       }
+
       .training {
-        padding:10px;
-        margin:10px;
-        max-width:250px;
-        border-bottom:1px dotted silver;
+        padding: 10px;
+        margin: 10px;
+        max-width: 250px;
+        border-bottom: 1px dotted silver;
       }
+
       .training p {
-        line-height:1.2em; font-size:14px;
+        line-height: 1.2em;
+        font-size: 14px;
       }
     </style>
 
-<div class="case-specifiek">
-  <div id="case-navbar">
-    <div class="download-count">
-      <iron-icon icon="my-icons:file-download"></iron-icon>+500 downloads</div>
-    <div class="quote-case">
-      <iron-icon icon="my-icons:mood"></iron-icon>"Ik heb 4 waardevolle connecties gelegd met de SmartBadge"</div>
-    <!-- <div>
-      <iron-icon icon="my-icons:grid-on"></iron-icon>
-    </div>
-    <div class="case-navigation">
-      <iron-icon icon="my-icons:keyboard-arrow-left"></iron-icon>
-      <iron-icon icon="my-icons:keyboard-arrow-right"></iron-icon>
-    </div>-->
-  </div> 
-  <div id="case-header">
-  </div>
-  <div class="case-content">
-    <div class="case-intro">
-      <h1>Trainingen</h1>
-      <p>We bieden de onderstaande trainingen</p>
-    </div>
-    <div>
-      <div class="trainingen">
-        <template is="dom-repeat" items="[[trainingen]]">
-          <div class="training">
-            <a class="relatedlink" href="[[item.name]]">[[item.title]]</a>
-            <p>[[item.shortdescription]]</p>
-            <p style="font-style:italic;font-size:12px;">Doetinchem, [[item.date]]</p>
-          </div>
-        </template>
+    <div class="training-page">
+      <div id="case-navbar">
+        <div class="back">
+          <a name="home" href="[[rootPath]]trainingen">
+            <iron-icon icon="my-icons:arrow-back"></iron-icon>
+        </div>
+        </a>
       </div>
+      <div id="case-header">
+      </div>
+      <div class="case-content">
+        <div class="case-intro">
+          <h1>Trainingen</h1>
+          <p>We bieden de onderstaande trainingen</p>
+        </div>
+        <div>
+          <div class="trainingen">
+            <template is="dom-repeat" items="[[trainingen]]">
+              <div class="training">
+                <a class="relatedlink" href="[[item.name]]">
+                  <div class="card-small">
+                    <h3>[[item.title]]</h3>
+                    <p>[[item.shortdescription]]</p>
+                    <p style="font-style:italic;font-size:12px;">Doetinchem, [[item.date]]</p>
+                  </div>
+                </a>
+              </div>
+            </template>
+          </div>
 
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<ico-footer></ico-footer>
-</template>
+    <ico-footer></ico-footer>
+  </template>
 
-<script>
-  class IcoTrainingList extends Polymer.Element {
-    static get is() { return 'ico-traininglist'; }
-    static get properties() {
-      return {
-        trainingen:{type:Array, value:[]}
+  <script>
+    class IcoTrainingList extends Polymer.Element {
+      static get is() { return 'ico-traininglist'; }
+      static get properties() {
+        return {
+          trainingen: { type: Array, value: [] }
+        }
       }
     }
-  }
 
-  window.customElements.define(IcoTrainingList.is, IcoTrainingList);
-</script>
+    window.customElements.define(IcoTrainingList.is, IcoTrainingList);
+  </script>
 </dom-module>

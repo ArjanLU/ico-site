@@ -47,195 +47,150 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-app">
   <template>
-    <style>
-
-      app-drawer-layout:not([narrow]) [drawer-toggle] {
-        display: none;
-      }
-
-    app-drawer {
-       --app-drawer-scrim-background:rgba(66, 47, 89, 0.5);
-    }
-
-      app-header {
-        color: #333;
-        background-color: #FFF;
-      }
-
-      app-header paper-icon-button {
-        --paper-icon-button-ink-color: white;
-      }
-
-      app-toolbar{
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .drawer-list {
-        margin: 0 20px;
-      }
-
-      .drawer-bottom{
-        margin: 0 20px;
-      }
-
-      .drawer-list a {
-        display: block;
-        padding: 0 16px;
-        text-decoration: none;
-        color: var(--app-secondary-color);
-        line-height: 40px;
-      }
-
-      .drawer-list a.iron-selected {
-        color: black;
-        font-weight: bold;
-      }
-
-      .mainmenu {
-        width:100%;
-        display:flex;
-        justify-content: center
-      }
-      .mainmenu a {
-        margin:20px;
-        color:black;
-        text-decoration: none;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        font-variant: small-caps;
-      }
+    <style include="shared-styles">
     </style>
 
-<app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
+    <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
 
-<app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
-</app-route>
+    <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
+    </app-route>
 
-<app-drawer-layout fullbleed force-narrow id="drawerlayout">
-  <!-- Drawer content -->
-  <app-drawer id="drawer" slot="drawer">
-    <app-toolbar>Menu</app-toolbar>
-    <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-      <a name="home" href="[[rootPath]]home">Home</a>
-      <a name="diensten" href="[[rootPath]]diensten">Diensten</a>
-      <a name="trainingen" href="[[rootPath]]trainingen">Training</a>
-      <a name="cases" href="[[rootPath]]cases">Cases</a>
-      <a name="over-ons" href="[[rootPath]]over-ons">Over ons</a>
-      <div style="display:flex; flex-direction:row; align-items: center;"><a name="vacatures" href="[[rootPath]]vacatures">Vacatures</a><iron-icon icon="my-icons:coffee"></iron-icon></div>
-      <a name="contact" href="[[rootPath]]contact">Contact</a>
-    </iron-selector>
-  </app-drawer>
+    <app-drawer-layout fullbleed force-narrow id="drawerlayout">
+      <!-- Drawer content -->
+      <app-drawer id="drawer" slot="drawer">
+        <app-toolbar>Menu</app-toolbar>
+        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+          <a name="home" href="[[rootPath]]home">Home</a>
+          <a name="diensten" href="[[rootPath]]diensten">Diensten</a>
+          <a name="trainingen" href="[[rootPath]]trainingen">Training</a>
+          <a name="cases" href="[[rootPath]]cases">Cases</a>
+          <a name="over-ons" href="[[rootPath]]over-ons">Over ons</a>
+          <div style="display:flex; flex-direction:row; align-items: center;"><a name="vacatures" href="[[rootPath]]vacatures">Vacatures</a>
+            <iron-icon icon="my-icons:coffee"></iron-icon>
+          </div>
+          <a name="contact" href="[[rootPath]]contact">Contact</a>
+        </iron-selector>
+      </app-drawer>
 
-  <!-- Main content -->
-  <app-header-layout has-scrolling-region id="header">
-    <app-header  slot="header" condenses reveals effects="waterfall">
-      <app-toolbar>
-        <template is="dom-if" if="[[smallscreen]]">
-          <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-        </template>
-        <div style="display:flex;width:100%;justify-content:center;">
-          <a name="home" href="[[rootPath]]home">
-            <div main-title>
-              <img style="height:35px;" src="images/logo-iconica.svg" /> 
+      <app-header-layout has-scrolling-region id="header">
+        <app-header slot="header" condenses reveals effects="waterfall">
+          <template is="dom-if" if="[[smallscreen]]">
+            <div class="menu" style="height:70px; display:flex;justify-content: flex-start; align-items:center;padding-left:10px;">
+              <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
+              <a name="home" href="[[rootPath]]home">
+                <div main-title style="width:100%;display:flex;padding-left:25vw;">
+                  <img style="height:35px;padding-top:5px;" src="images/logo-iconica.svg" />
+                </div>
+              </a>
             </div>
-          </a>
-        </div>
-        <!-- <a name="contact" href="[[rootPath]]contact"><iron-icon icon="my-icons:coffee"></iron-icon> </a> -->
-      </app-toolbar>
-      <template is="dom-if" if="[[!smallscreen]]">
-         <div class="mainmenu">
-           <a href="[[rootPath]]diensten">diensten</a>
-           <a href="[[rootPath]]trainingen">trainingen</a>
-           <a href="[[rootPath]]cases">cases</a>
-           <a href="[[rootPath]]vacatures">vacatures</a>
-           <a href="[[rootPath]]over-ons">over ons</a>
-           <a href="[[rootPath]]contact">contact</a>
-         </div>
-      </template>
-    </app-header>
+          </template>
 
-    
-    <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="home" role="main" scroll-target="document">
-     
-      <ico-trainingpage name="trainingen"></ico-trainingpage>
-      <ico-traininglist name="traininglist" trainingen="[[trainingen]]"></ico-traininglist>
-      <ico-home name="home"></ico-home>
-      <ico-diensten name="diensten"></ico-diensten>
-      <ico-cases name="cases"></ico-cases>
-      <ico-over-ons name="over-ons"></ico-over-ons>
-      <ico-contact name="contact"></ico-contact>
-      <ico-vacatures name="vacatures"></ico-vacatures>
-      <my-view404 name="view404"></my-view404>
-      <ico-smartbadge name="smartbadge"> </ico-smartbadge>
-      <template is="dom-repeat" items="[[trainingen]]" > 
-          <ico-training name$="[[item.name]]" training="[[item]]"></div>
-      </template>
-    </iron-pages>
-    
-  </app-header-layout>
-</app-drawer-layout>
+          </div>
+          <!-- <a name="contact" href="[[rootPath]]contact"><iron-icon icon="my-icons:coffee"></iron-icon> </a> -->
 
-<ico-trainingdata trainingen="{{trainingen}}"></ico-trainingdata>
-<iron-media-query query="(max-width:600px)" query-matches="{{smallscreen}}"></iron-media-query>
-   
-</template>
+          <template is="dom-if" if="[[!smallscreen]]">
+            <div class="menu" style="height:70px; display:flex;justify-content: center; align-items:center;padding-left:20px;">
+              <div style="display:flex;width:100%;justify-content:center;">
+                <a name="home" href="[[rootPath]]home">
+                  <div main-title>
+                    <img style="height:35px;padding-top:5px;" src="images/logo-iconica.svg" />
+                  </div>
+                </a>
+                <div class="mainmenu">
+                  <a href="[[rootPath]]diensten">Diensten</a>
+                  <a href="[[rootPath]]trainingen">Trainingen</a>
+                  <a href="[[rootPath]]cases">Cases</a>
+                  <a href="[[rootPath]]vacatures">Vacatures</a>
+                  <a href="[[rootPath]]over-ons">Over ons</a>
+                  <a href="[[rootPath]]contact">Contact</a>
+                </div>
+              </div>
+          </template>
+        </app-header>
 
-<script>
-  class MyApp extends Polymer.Element {
-    static get is() { return 'my-app'; }
 
-    static get properties() {
-      return {
-        page: {
-          type: String,
-          reflectToAttribute: true,
-         // observer: '_pageChanged',
-        },
-        routeData: Object,
-        subroute: String,
-        // This shouldn't be neccessary, but the Analyzer isn't picking up
-        // Polymer.Element#rootPath
-        rootPath: String,
-      };
-    }
+        <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="home" role="main" scroll-target="document">
 
-    static get observers() {
-      return [
-        '_routePageChanged(routeData.page)',
-      ];
-    }
-    connectedCallback(){
-      super.connectedCallback();
-      // hack to reset the page to rerender the correct iron page from deeplink..
-      // dynamically generated iron pages do not respond well to deeplinks
-      setTimeout(() =>{
-        this.page = "";
-        this.set('page',this.routeData.page);
-      }, 1);
-    }
+          <ico-trainingpage name="trainingen"></ico-trainingpage>
+          <ico-traininglist name="traininglist" trainingen="[[trainingen]]"></ico-traininglist>
+          <ico-home name="home"></ico-home>
+          <ico-diensten name="diensten"></ico-diensten>
+          <ico-cases name="cases"></ico-cases>
+          <ico-over-ons name="over-ons"></ico-over-ons>
+          <ico-contact name="contact"></ico-contact>
+          <ico-vacatures name="vacatures"></ico-vacatures>
+          <my-view404 name="view404"></my-view404>
+          <ico-smartbadge name="smartbadge"> </ico-smartbadge>
+          <template is="dom-repeat" items="[[trainingen]]">
+            <ico-training name$="[[item.name]]" training="[[item]]">
+              </div>
+          </template>
+        </iron-pages>
 
-    _routePageChanged(page) {
-      // If no page was found in the route data, page will be an empty string.
-      // Default to 'view1' in that case.
-      this.page = page || 'home';
+      </app-header-layout>
+    </app-drawer-layout>
 
-      // Close a non-persistent drawer when the page & route are changed.
-      if (!this.$.drawer.persistent) {
-        this.$.drawer.close();
+    <ico-trainingdata trainingen="{{trainingen}}"></ico-trainingdata>
+    <iron-media-query query="(max-width:768px)" query-matches="{{smallscreen}}"></iron-media-query>
+
+  </template>
+
+  <script>
+    class MyApp extends Polymer.Element {
+      static get is() { return 'my-app'; }
+
+      static get properties() {
+        return {
+          page: {
+            type: String,
+            reflectToAttribute: true,
+            // observer: '_pageChanged',
+          },
+          routeData: Object,
+          subroute: String,
+          // This shouldn't be neccessary, but the Analyzer isn't picking up
+          // Polymer.Element#rootPath
+          rootPath: String,
+        };
       }
 
-      this._scrollUp();
+      static get observers() {
+        return [
+          '_routePageChanged(routeData.page)',
+        ];
+      }
+      connectedCallback() {
+        super.connectedCallback();
+        // hack to reset the page to rerender the correct iron page from deeplink..
+        // dynamically generated iron pages do not respond well to deeplinks
+        setTimeout(() => {
+          this.page = "";
+          this.set('page', this.routeData.page);
+        }, 1);
+      }
+
+      _routePageChanged(page) {
+        // If no page was found in the route data, page will be an empty string.
+        // Default to 'view1' in that case.
+        this.page = page || 'home';
+
+        // Close a non-persistent drawer when the page & route are changed.
+        if (!this.$.drawer.persistent) {
+          this.$.drawer.close();
+        }
+
+        this._scrollUp();
+      }
+
+      _scrollUp() {
+        this.$.header.shadowRoot.querySelector("#contentContainer").scroll(0, 0);
+      }
+
+      _showPage404() {
+        this.page = 'view404';
+      }
     }
 
-    _scrollUp(){
-      this.$.header.shadowRoot.querySelector("#contentContainer").scroll(0,0);
-    }
-
-    _showPage404() {
-      this.page = 'view404';
-    }
-  }
-
-  window.customElements.define(MyApp.is, MyApp);
-</script>
+    window.customElements.define(MyApp.is, MyApp);
+  </script>
 </dom-module>
