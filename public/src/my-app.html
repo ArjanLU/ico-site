@@ -31,6 +31,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="./my-icons.html">
 <link rel="import" href="/src/my-home.html">
 <link rel="import" href="/src/my-cases.html">
+<link rel="import" href="/src/my-meetuppage.html">
 <link rel="import" href="/src/my-trainingpage.html">
 <link rel="import" href="/src/my-traininglist.html">
 <link rel="import" href="/src/my-diensten.html">
@@ -69,6 +70,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <iron-icon icon="my-icons:coffee"></iron-icon>
           </div>
           <a name="contact" href="[[rootPath]]contact">Contact</a>
+          <a name="meetups" href="[[rootPath]]meetups">Meetups</a>
         </iron-selector>
       </app-drawer>
 
@@ -119,6 +121,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <ico-over-ons name="over-ons"></ico-over-ons>
           <ico-contact name="contact"></ico-contact>
           <ico-vacatures name="vacatures"></ico-vacatures>
+          <ico-meetups name="meetups"></ico-meetups>
           <my-view404 name="view404"></my-view404>
           <ico-smartbadge name="smartbadge"> </ico-smartbadge>
           <template is="dom-repeat" items="[[trainingen]]">

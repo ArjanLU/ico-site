@@ -1,0 +1,62 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="ico-meetups">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+    </style>
+
+<div class="follow-header meetups-color">
+    <div class="follow-header-text">
+      <div>
+       Bijeenkomsten voor techneuten en door techneuten bij ons op lokatie.
+      </div>
+      <div class="link"> <a name="cases" href="[[rootPath]]meetuplist">Bekijk onze meetups</a>
+        <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+      </div>
+    </div>
+  </div>
+  
+<div class="follow-content" style="margin-bottom:100px">
+    <div class="content-block">
+      <div class="subtitle">Wij staan achter</div>
+      <div class="title">
+          <h1>Onze meetups</h1>
+        <p>Wij organiseren meetups voor vooraanstaande technologieen. Meetups zijn gratis evenementen voor ontwikkelaars, designers en andere techneuten. 
+          Op deze avondsessie worden er twee presentaties gegeven door verschillende sprekers over verschillende onderwerpen. Vooraf, tussendoor en achteraf
+          is er ruimte om over deze onderwerpen te praten met vakgenoten en ervaringen uit te wisselen. 
+           </p>
+      </div>
+    </div>
+    <div class="content-block">
+        <div class="subtitle">Onze</div>
+        <div class="title">
+            <h1>Geplande meetups</h1>
+   
+        </div>
+      </div>
+</div>
+<ico-footer></ico-footer>
+</template>
+
+<script>
+  class IcoMeetupPage extends Polymer.Element {
+    static get is() { return 'ico-meetups'; }
+  }
+
+  window.customElements.define(IcoMeetupPage.is, IcoMeetupPage);
+</script>
+</dom-module>
