@@ -39,6 +39,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         border-bottom: 1px dotted silver;
       }
 
+      .pitstop{
+        background-color:#e1f5fe;
+      }
+
       .training p {
         line-height: 1.2em;
         font-size: 14px;
@@ -62,10 +66,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
         <div>
           <div class="trainingen">
-            <template is="dom-repeat" items="[[trainingen]]">
+            <template is="dom-repeat" items="[[_rooster(trainingen.*)]]">
               <div class="training">
                 <a class="relatedlink" href="[[item.name]]">
-                  <div class="card-small">
+                  <div class$="[[_getClass(item.type)]]" style="min-height: 200px">
                     <h3>[[item.title]]</h3>
                     <p>[[item.shortdescription]]</p>
                     <p style="font-style:italic;font-size:12px;">Doetinchem, [[item.date]]</p>
@@ -76,7 +80,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </div>
 
         </div>
-      </div>
+
+        
+              <!-- <h1>Trainingen</h1>
+              <p>We bieden de onderstaande trainingen op aanvraag</p>
+            </div>
+            <div>
+              <div class="trainingen">
+                <template is="dom-repeat" items="[[_aanvraag(trainingen.*)]]">
+                  <div class="training">
+                    <a class="relatedlink" href="[[item.name]]">
+                      <div class="card-small">
+                        <h3>[[item.title]]</h3>
+                        <p>[[item.shortdescription]]</p>
+                        <p style="font-style:italic;font-size:12px;">Doetinchem, [[item.date]]</p>
+                      </div>
+                    </a>
+                  </div>
+                </template>
+              </div>
+    
+            </div> -->
+
+     
     </div>
 
     <ico-footer></ico-footer>
@@ -90,6 +116,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           trainingen: { type: Array, value: [] }
         }
       }
+      _rooster(val){
+        return val.base.sort((a, b) => a.sort - b.sort);// .filter(t => t.date != "op aanvraag");
+      }
+
+      _aanvraag(val){
+        return val.base.sort((a, b) => a.sort - b.sort).filter(t => t.date == "op aanvraag");
+      }
+      _getClass(type) {
+        return "card-small " + (type == 'p' ? "pitstop": "");
+      }
+
     }
 
     window.customElements.define(IcoTrainingList.is, IcoTrainingList);

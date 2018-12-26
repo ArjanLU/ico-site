@@ -31,6 +31,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="./my-icons.html">
 <link rel="import" href="/src/my-home.html">
 <link rel="import" href="/src/my-cases.html">
+<link rel="import" href="/src/my-meetup-data.html">
 <link rel="import" href="/src/my-meetuppage.html">
 <link rel="import" href="/src/my-trainingpage.html">
 <link rel="import" href="/src/my-traininglist.html">
@@ -64,13 +65,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a name="home" href="[[rootPath]]home">Home</a>
           <a name="diensten" href="[[rootPath]]diensten">Diensten</a>
           <a name="trainingen" href="[[rootPath]]trainingen">Training</a>
+          <a name="meetups" href="[[rootPath]]meetups">Meetups</a>
           <a name="cases" href="[[rootPath]]cases">Cases</a>
           <a name="over-ons" href="[[rootPath]]over-ons">Over ons</a>
           <div style="display:flex; flex-direction:row; align-items: center;"><a name="vacatures" href="[[rootPath]]vacatures">Vacatures</a>
             <iron-icon icon="my-icons:coffee"></iron-icon>
           </div>
           <a name="contact" href="[[rootPath]]contact">Contact</a>
-          <a name="meetups" href="[[rootPath]]meetups">Meetups</a>
         </iron-selector>
       </app-drawer>
 
@@ -101,6 +102,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <div class="mainmenu">
                   <a href="[[rootPath]]diensten">Diensten</a>
                   <a href="[[rootPath]]trainingen">Trainingen</a>
+                  <a href="[[rootPath]]meetups">Meetups</a>
                   <a href="[[rootPath]]cases">Cases</a>
                   <a href="[[rootPath]]vacatures">Vacatures</a>
                   <a href="[[rootPath]]over-ons">Over ons</a>
@@ -121,7 +123,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <ico-over-ons name="over-ons"></ico-over-ons>
           <ico-contact name="contact"></ico-contact>
           <ico-vacatures name="vacatures"></ico-vacatures>
-          <ico-meetups name="meetups"></ico-meetups>
+          <ico-meetups name="meetups" meetups="[[meetups]]"></ico-meetups>
           <my-view404 name="view404"></my-view404>
           <ico-smartbadge name="smartbadge"> </ico-smartbadge>
           <template is="dom-repeat" items="[[trainingen]]">
@@ -134,6 +136,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </app-drawer-layout>
 
     <ico-trainingdata trainingen="{{trainingen}}"></ico-trainingdata>
+    <ico-meetupdata trainingen="{{meetups}}"></ico-meetupdata>
     <iron-media-query query="(max-width:768px)" query-matches="{{smallscreen}}"></iron-media-query>
 
   </template>

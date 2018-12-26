@@ -17,6 +17,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host {
         display: block;
       }
+
+      .trainingen {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .training {
+        padding: 10px;
+        margin: 10px;
+        max-width: 300px;
+        border-bottom: 1px dotted silver;
+      }
+
+      .training p {
+        line-height: 1.2em;
+        font-size: 14px;
+      }
+
+      .meetups {
+        display:flex;
+        flex-wrap:wrap;
+        width:100%;
+      }
+      .meetup-height {
+        position:relative;
+        min-height:450px;
+      }
+
+      .sessions {
+        margin-left: -40px;
+        font-size: 12px;
+        font-weight: bold;
+      }
     </style>
 
 <div class="follow-header meetups-color">
@@ -44,8 +77,49 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="content-block">
         <div class="subtitle">Onze</div>
         <div class="title">
-            <h1>Geplande meetups</h1>
+            <h1>Meetup agenda</h1>
+            <p>Iedere meetup heeft de volgende agenda:</p>
+            <ol>
+              <li>17:30 inloop</li>
+              <li>18:00 eerste sessie</li>
+              <li>18:50 koffie</li>
+              <li>19:10 tweede sessie</li>
+              <li>20:00 borrel</li>
+              <li>20:30 einde</li>
+            </ol>
    
+        </div>
+      </div>
+
+
+    <div class="content-block">
+        <div class="subtitle">Onze</div>
+        <div class="title">
+            <h1>Geplande meetups</h1>
+            <div class="meetups">
+            <template is="dom-repeat" items="[[meetups]]">
+            <div class="training">
+                  <div class="card-small meetup-height">
+                    <h3>[[item.title]]</h3>
+                    <p style="font-style:italic;font-size:12px;">Doetinchem, [[item.date]]</p>
+                    <p>[[item.shortdescription]]</p>
+                    <h4>Sessies</h4>
+                    <ol class="sessions">
+                    <template is="dom-repeat" items="[[item.talks]]" as="talk">
+                        <li>[[talk.title]]</li>
+                    </template>
+                    </ol>
+                    <br/>
+                    <div class="keyword" style="position: absolute;bottom:10px;right:10px;margin-bottom:10px;">
+                        <div class="inverse-link"> <a name="contact" href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Schrijf me in voor de [[item.title]] meetup">Schrijf
+                            mij in</a>
+                          <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+            </template>
+          </div>
         </div>
       </div>
 </div>
