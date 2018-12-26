@@ -23,12 +23,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-input/paper-input-container.html">
 <link rel="import" href="../bower_components/google-map/google-map.html">
 <link rel="import" href="../bower_components/iron-form/iron-form.html">
 <link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="./my-training-data.html">
 <link rel="import" href="./my-training.html">
 <link rel="import" href="./my-icons.html">
+<link rel="import" href="/src/my-database.html">
 <link rel="import" href="/src/my-home.html">
 <link rel="import" href="/src/my-cases.html">
 <link rel="import" href="/src/my-meetup-data.html">
@@ -38,6 +40,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="/src/my-diensten.html">
 <link rel="import" href="/src/my-over-ons.html">
 <link rel="import" href="/src/my-footer.html">
+<link rel="import" href="/src/my-signup-page.html">
+<link rel="import" href="/src/my-signup-thanks.html">
 <link rel="import" href="/src/my-contact.html">
 <link rel="import" href="/src/my-vacatures.html">
 <link rel="import" href="/src/my-smartbadge.html">
@@ -123,11 +127,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <ico-over-ons name="over-ons"></ico-over-ons>
           <ico-contact name="contact"></ico-contact>
           <ico-vacatures name="vacatures"></ico-vacatures>
-          <ico-meetups name="meetups" meetups="[[meetups]]"></ico-meetups>
+          <ico-meetups name="meetups" meetups="[[meetups]]" on-signup="_signup"></ico-meetups>
+          <ico-signup name="signup" event="[[event]]" on-signup="_savesignup"></ico-signup> 
+          <ico-thanks name="thanks" event="[[event]]" on-home="_goHome"></ico-thanks> 
           <my-view404 name="view404"></my-view404>
           <ico-smartbadge name="smartbadge"> </ico-smartbadge>
           <template is="dom-repeat" items="[[trainingen]]">
-            <ico-training name$="[[item.name]]" training="[[item]]">
+            <ico-training name$="[[item.name]]" training="[[item]]" on-signup="_signup">
               </div>
           </template>
         </iron-pages>
@@ -137,6 +143,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <ico-trainingdata trainingen="{{trainingen}}"></ico-trainingdata>
     <ico-meetupdata trainingen="{{meetups}}"></ico-meetupdata>
+    <ico-database id="database"></ico-database>
     <iron-media-query query="(max-width:768px)" query-matches="{{smallscreen}}"></iron-media-query>
 
   </template>
@@ -152,6 +159,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             reflectToAttribute: true,
             // observer: '_pageChanged',
           },
+          event:{ type:Object, value:{name:'test'}},
           routeData: Object,
           subroute: String,
           // This shouldn't be neccessary, but the Analyzer isn't picking up
@@ -195,6 +203,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _showPage404() {
         this.page = 'view404';
       }
+
+      _signup(e){
+        console.log("someone is signin up", e);
+        this.set('event', e.detail.event);
+        // redirect to thank you page
+        this.set('page', 'signup')
+      }
+
+      _savesignup(e){
+        console.log("someone is signin up", e);
+        this.$.database.saveSignup(e.detail.event, e.detail.email);
+        // redirect to thank you page
+        this.set('page', 'thanks')
+      }
+
+      _goHome(){
+        this.set('page', '');
+      }
+
     }
 
     window.customElements.define(MyApp.is, MyApp);

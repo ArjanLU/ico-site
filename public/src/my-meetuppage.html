@@ -111,9 +111,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </ol>
                     <br/>
                     <div class="keyword" style="position: absolute;bottom:10px;right:10px;margin-bottom:10px;">
-                        <div class="inverse-link"> <a name="contact" href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Schrijf me in voor de [[item.title]] meetup">Schrijf
-                            mij in</a>
-                          <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+                        <div class="inverse-link"> 
+                          <paper-button name="contact" on-tap="_signup">Schrijf mij in
+                            <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+                        </paper-button>
                         </div>
                     </div>
                   </div>
@@ -129,6 +130,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script>
   class IcoMeetupPage extends Polymer.Element {
     static get is() { return 'ico-meetups'; }
+
+    _signup(e){
+      this.dispatchEvent(new CustomEvent("signup", { detail:{ event:e.model.item, bubbles:true, composed:true}}));
+    }
   }
 
   window.customElements.define(IcoMeetupPage.is, IcoMeetupPage);

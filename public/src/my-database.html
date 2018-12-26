@@ -1,0 +1,36 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html"/>
+
+<script>
+class IcoDatabase extends Polymer.Element
+{
+    static get properties(){}
+    static get is(){
+        return 'ico-database';
+    }
+
+    constructor(){
+        super();
+        // Initialize Firebase
+        firebase.initializeApp({
+            apiKey: "AIzaSyDpxkhpOZ1PPresvEfqjuJ5tmjHCkFEaho",
+            authDomain: "iconica-site.firebaseapp.com",
+            databaseURL: "https://iconica-site.firebaseio.com",
+            projectId: "iconica-site",
+            storageBucket: "iconica-site.appspot.com",
+            messagingSenderId: "319029813406"
+        });
+    }
+
+    connectedCallback(){}
+
+    saveSignup(event, user){
+        firebase.database().ref("signups").push({
+            event:event.name,
+            date:event.date,
+            type:(event.type == undefined ? "meetup" : event.type == 'p' ? "pitstop" : "training"),
+            email:user
+        });
+    }
+}
+customElements.define(IcoDatabase.is, IcoDatabase);
+</script>
