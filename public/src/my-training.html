@@ -64,7 +64,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div class="summary">
           <div class="keyword">
             <div class="label">
-              Aantal dagen
+              Duur
             </div>
             <div class="cell"> [[training.duration]]</div>
           </div>
@@ -74,16 +74,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div class="cell">
             [[training.date]]
           </div>
-          <div class="keyword">
+          <!-- <div class="keyword">
             <div class="label">
               Garantie
             </div>
             Onze trainingen starten altijd!
-          </div>
+          </div> -->
           <div class="keyword">
-            <div class="inverse-link"> <a name="contact" href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Schrijf me in voor de [[training.title]] training">Schrijf
-                mij in</a>
-              <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+            <div class="inverse-link">
+              <paper-button name="contact" on-tap="_signup">Schrijf mij in
+                <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+              </paper-button>
             </div>
           </div>
         </div>
@@ -147,20 +148,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   <li>Trainingen van hoog gekwalificeerd personeel</li>
                   <li>Op locatie of bij ons in Doetinchem</li>
                   <li>Getest door een multi-disciplinair team</li>
+                  <li>Onze trainingen gaan altijd door!</li>
                 </ol>
               </div>
             </div>
             <div class="subscribe">
-              <div class="keyword">
-                <div class="inverse-link"> <a name="contact" href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=In wil infirmatie over de training [[training.title]]">Stuur
+              <!-- <div class="keyword">
+                <div class="inverse-link"> 
+                  <a name="contact" href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=In wil infirmatie over de training [[training.title]]">Stuur
                     mij informatie</a>
                   <iron-icon icon="my-icons:arrow-forward"></iron-icon>
                 </div>
-              </div>
+              </div> -->
               <div class="keyword">
-                <div class="inverse-link"> <a name="contact" href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Schrijf me in voor de [[training.title]] training">Schrijf
-                    mij in</a>
-                  <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+                <div class="inverse-link">                           
+                  <paper-button name="contact" on-tap="_signup">Schrijf mij in
+                    <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+                </paper-button>
                 </div>
               </div>
             </div>
@@ -223,6 +227,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           training: { type: Object, value: {}, notify: true }
         };
       }
+
+      _signup(e){
+          this.dispatchEvent(new CustomEvent("signup", { detail:{ event:this.training, bubbles:true, composed:true}}));
+      }
+
     }
 
     window.customElements.define(IcoTraining.is, IcoTraining);

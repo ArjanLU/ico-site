@@ -26,6 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --disabled-text-color: #BDBDBD;
         --divider-color: #BDBDBD;
         --training-color: #455a64;
+        --meetups-color:#33691e;
         display: block;
       }
 
@@ -33,6 +34,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         line-height: 2;
         color: var(--primary-text-color);
         max-width: 800px;
+      }
+
+      .card-small .inverse-link a {
+        color: var(--accent-color);
+        text-align:end;
+      }
+
+      .card-small .inverse-link {
+        text-align:end;
       }
 
       .inverse-link a {
@@ -189,6 +199,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background: var(--training-color);
       }
 
+
+      .meetups-color {
+        background: var(--app-primary-color);
+      }
+
+      .home-color {
+        background: var(--app-primary-color);
+      }
+
       .follow-header-text {
         font-size: calc(16px + 1.5vw);
         color: var(--text-primary-color);
@@ -265,7 +284,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: flex;
         justify-content: space-around;
         align-items: center;
-        width: 100%;
         background: #fff;
         height: 50px;
         padding: 10px;
@@ -333,11 +351,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       li::before {
-        content: counter(li);
-        font-size: 1.5em;
+        content: counter(li)'.';
+        font-size: 1.2em;
         color: var(--light-primary-color);
         display: inline-block;
-        width: 1.5em;
+        width: 1.7em;
       }
 
       li {
@@ -530,7 +548,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       #case-navbar {
         height: 75px;
-        width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -563,6 +580,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .training-page .case-intro {
         background: var(--training-color);
+      }
+
+      .meetup-page .case-intro {
+        background: var(--meetups-color);
       }
 
       .training-page #case-navbar {
