@@ -1,4 +1,4 @@
-<link rel="import" href="../bower_components/polymer/polymer-element.html"/>
+<link rel="import" href="../bower_components/polymer/polymer-element.html" />
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="ico-signup">
@@ -7,33 +7,62 @@
             :host {
                 display: block;
             }
-        </style>    
-        <div class="follow-content" style="margin-bottom:100px">
-                <div class="content-block">
-                  <div class="subtitle">Inshrijven voor [[event.title]] op [[event.date]]</div>
-                  <div class="title"><h1>Nog één stapje</h1></dßiv>
-                  <p>Vul hieronder je email adres in en wij nemen zo spoedig mogelijk contact met je op om de inschrijving door te nemen.</p>
-                 <paper-input invalid="{{invalid}}"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" always-float-label required label="Jouw email adres" value="{{email}}" auto-validate></paper-input>
-                  <paper-button icon="menu" on-tap="_signup" disabled$="[[_isValid(invalid)]]">Inschrijven</paper-button>
+        </style>
+
+        <div class="training-page ">
+            <div id="case-navbar">
+                <div class="back">
+                    <a name="home" href="[[rootPath]]meetups">
+                        <iron-icon icon="my-icons:arrow-back"></iron-icon>
                 </div>
-        </div>
+                </a>
+            </div>
+            <div id="case-header">
+            </div>
+            <div class="case-content">
+                <div class="case-intro">
+                    <h1>Inschrijving</h1>
+                    <p>Inshrijven voor onze meetup over [[event.title]] op [[event.date]]</p>
+                </div>
+                <div class="signup">
+                    <div class="content-block">
+                        <div class="card-big">
+                        <p>Wanneer je je email adres achter laat nemen wij zo snel mogelijk contact met je op </p>
+                        <paper-input invalid="{{invalid}}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            always-float-label required label="Jouw email adres" value="{{email}}" auto-validate></paper-input>
+                        <div class="inverse-link">
+                            <paper-button on-tap="_signup" disabled$="[[_isValid(invalid)]]">Schrijf mij in
+                                <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+                            </paper-button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ico-footer></ico-footer>
     </template>
 </dom-module>
 <script>
     class IcoSignUp extends Polymer.Element {
-        static get is() { return 'ico-signup';}
+        static get is() { return 'ico-signup'; }
         static get properties() {
             return {
-                signupevent:{type:Object, value:{}}
+                signupevent: { type: Object, value: {} }
             };
         }
 
-        _isValid(value){
+        _isValid(value) {
             return this.email == undefined || this.email == "" || value;
         }
-        _signup(){
-            this.dispatchEvent(new CustomEvent("signup", { detail:{event:this.event, email:this.email}, bubbles:true, composed:true}));
+        _signup() {
+            this.dispatchEvent(new CustomEvent("signup", { detail: { event: this.event, email: this.email }, bubbles: true, composed: true }));
         }
     }
     customElements.define(IcoSignUp.is, IcoSignUp);
+</script>
+
+<script>
+function goBack() {
+  window.history.back();
+}
 </script>
