@@ -21,6 +21,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .follow-header {
         background: var(--accent-color);
       }
+
+      google-map {
+        height: 300px;
+        margin: 10px;
+      }
     </style>
 
     <div class="follow-header">
@@ -56,15 +61,49 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <h3>Jeroen Salemink</h3>
           </div>
           <div class="card-small">
-              <img style="width:100%" src="images/arjan.jpg">
-              <h3>Arjan Luemes</h3>
-            </div>
+            <img style="width:100%" src="images/arjan.jpg">
+            <h3>Arjan Luemes</h3>
+          </div>
         </div>
         <!--<div class="subtitle">Prettige samenwerking voor een topproduct</div>
 <div class="title">
   <h1>Wij werken graag samen met</h1>
 </div>-->
+        <div class="content-block">
+          <div class="subtitle">Heb je vragen, of trek in een kop koffie? </div>
+          <div class="title">
+            <h1>Neem contact met ons op!</h1>
+          </div>
+          <div class="contact-cards">
+            <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Lekkere kop koffie">
+              <div class="card-small">
+                <h1>Mail ons</h1>
+                <p>info@iconica.nl</p>
+              </div>
+            </a>
+            <a href="tel:+31620797383">
+              <div class="card-small">
+                <h1>Bel ons</h1>
+                <p>06 20 79 73 83</p>
+              </div>
+            </a>
+            <div class="card-small">
+              <h1>Bezoek</h1>
+              <p>Raadhuisstraat 25, 7001 EX te Doetinchem</p>
+            </div>
+          </div>
+        </div>
+        <div class="content-block">
+          <div class="subtitle">Bij ons staat altijd een goede kop koffie klaar!</div>
+          <div class="title">
+            <h1>Kom langs op:</h1>
+          </div>
+          <google-map fit-to-markers api-key="AIzaSyCs5jzBRiz6rjclI140HxsD8QsFrXmsbUw" mouseEvents="false">
+            <google-map-marker slot="markers" latitude="51.965702" longitude="6.293038"></google-map-marker>
+          </google-map>
+        </div>
       </div>
+    </div>
     </div>
     <ico-footer></ico-footer>
   </template>
