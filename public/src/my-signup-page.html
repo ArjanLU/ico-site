@@ -1,4 +1,4 @@
-<link rel="import" href="../bower_components/polymer/polymer-element.html"/>
+<link rel="import" href="../bower_components/polymer/polymer-element.html" />
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="ico-signup">
@@ -15,25 +15,33 @@
                   <p>Vul hieronder je email adres in en wij nemen zo spoedig mogelijk contact met je op om de inschrijving te bevestigen.</p>
                  <paper-input invalid="{{invalid}}"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" always-float-label required label="Jouw email adres" value="{{email}}" auto-validate></paper-input>
                   <paper-button raised  icon="menu" on-tap="_signup" disabled$="[[_isValid(invalid)]]">Schrijf mij in <iron-icon icon="my-icons:arrow-forward"></iron-icon></paper-button>
+
                 </div>
-        </div>
+            </div>
+            <ico-footer></ico-footer>
     </template>
 </dom-module>
 <script>
     class IcoSignUp extends Polymer.Element {
-        static get is() { return 'ico-signup';}
+        static get is() { return 'ico-signup'; }
         static get properties() {
             return {
-                signupevent:{type:Object, value:{}}
+                signupevent: { type: Object, value: {} }
             };
         }
 
-        _isValid(value){
+        _isValid(value) {
             return this.email == undefined || this.email == "" || value;
         }
-        _signup(){
-            this.dispatchEvent(new CustomEvent("signup", { detail:{event:this.event, email:this.email}, bubbles:true, composed:true}));
+        _signup() {
+            this.dispatchEvent(new CustomEvent("signup", { detail: { event: this.event, email: this.email }, bubbles: true, composed: true }));
         }
     }
     customElements.define(IcoSignUp.is, IcoSignUp);
+</script>
+
+<script>
+function goBack() {
+  window.history.back();
+}
 </script>

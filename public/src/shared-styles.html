@@ -26,7 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --disabled-text-color: #BDBDBD;
         --divider-color: #BDBDBD;
         --training-color: #455a64;
-        --meetups-color:#33691e;
+        --meetups-color: #33691e;
         display: block;
       }
 
@@ -52,16 +52,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-right:25px;
       }
 
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: var(--app-primary-color);
+      }
+
+      .inverse-link {
+        color: var(--accent-color);
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+      }
+
       .card-small .inverse-link a {
         color: var(--accent-color);
-        text-align:end;
+        text-align: end;
       }
 
       .full-width { max-width:none !important}
 
 
       .card-small .inverse-link {
-        text-align:end;
+        text-align: end;
+      }
+
+      .card-small h3 {
+        color: var(--app-primary-color);
       }
 
       .inverse-link {
@@ -113,7 +133,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         max-width: 500px;
         min-width: 275px;
         width: 30vw;
-        margin: 0px 24px 24px 0px;
+        margin: 24px 24px 24px 0px;
         padding: 16px;
         color: #757575;
         border-radius: 5px;
@@ -133,6 +153,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       #page-footer .card-big:hover {
         background: var(--light-primary-color);
       }
+
+       #page-footer a:hover{
+        text-decoration: none;
+       }
 
       .contact-cards .card-small {
         margin: 19px;
@@ -311,6 +335,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         flex-direction: row;
         justify-content: flex-end;
         vertical-align: middle;
+        color: var(--text-primary-color);
       }
 
       .split-content {
@@ -404,9 +429,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       li {
-        counter-increment: li
+        counter-increment: li;
+        font-weight: 400;
+        color: #000;
       }
 
+      .signup {
+        width: 30vw;
+        padding: 3vw;
+      }
 
       .portfolio-items {
         display: flex;
@@ -477,7 +508,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .contact-cards {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
       }
 
       .content-block {
@@ -573,7 +603,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-weight: 500;
         letter-spacing: 0.15em;
         margin-bottom: 0.5em;
-        text-transform: uppercase;
+      }
+
+      paper-button {
+        text-transform: none;
+        font-size: 16px;
+        margin: 20px 0px;
+      }
+
+      paprer-input {
+        width: 300px;
       }
 
       .content-details p {
@@ -632,6 +671,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .training-page .case-intro {
         background: var(--training-color);
+        color: #fff;
       }
 
       .meetup-page .case-intro {
@@ -654,6 +694,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-top: -100px;
         padding: 30px;
         max-width: 500px;
+      }
+
+      .case-intro h1 {
+        color: #fff;
       }
 
       .case-intro p {
