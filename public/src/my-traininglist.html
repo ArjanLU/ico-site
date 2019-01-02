@@ -50,38 +50,60 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <div class="training-page">
-      <div id="case-navbar">
-        <div class="back">
-          <a name="home" href="[[rootPath]]trainingen">
-            <iron-icon icon="my-icons:arrow-back"></iron-icon>
-        </div>
-        </a>
-      </div>
       <div id="case-header">
       </div>
       <div class="case-content">
         <div class="case-intro">
           <h1>Trainingen</h1>
           <p>We bieden de onderstaande trainingen</p>
+          <div class="link"> 
+              <a name="cases" href="[[rootPath]]trainingen">
+                <iron-icon icon="my-icons:arrow-back"></iron-icon>
+                Terug 
+              </a>
+            </div>
         </div>
         <div>
-          <div class="trainingen">
-            <template is="dom-repeat" items="[[_rooster(trainingen.*)]]">
-              <div class="training">
-                <a class="relatedlink" href="[[item.name]]">
-                  <div class$="[[_getClass(item.type)]]" style="min-height: 200px">
-                    <h3>[[item.title]]</h3>
-                    <p>[[item.shortdescription]]</p>
-                    <p style="font-style:italic;font-size:12px;">Doetinchem, [[item.date]]</p>
-                  </div>
-                </a>
-              </div>
-            </template>
-          </div>
+          <div class="calendar">
+              <template is="dom-repeat" items="[[months]]" as="month">
+                <template is="dom-if" if="[[_hasContent(trainingen.*,month)]]">
+                <div class="text-field-header">[[_monthName(month)]] 2019</div>
+                <div class="trainingen">
+                  <template is="dom-repeat" items="[[_rooster(trainingen.*, month)]]">
+                    <div class="training">
+                      <a class="relatedlink" href="[[item.name]]">
+                        <div class$="[[_getClass(item.type)]]" style="min-height: 200px">
+                          <h3>[[item.title]]</h3>
+                          <p>[[item.shortdescription]]</p>
+                          <p style="font-style:italic;font-size:12px;">Doetinchem, [[item.date]]</p>
+                        </div>
+                      </a>
+                    </div>
+                  </template>
+                </div>
+              </template>
+              </template>
 
+              <div class="text-field-header">Trainingen op aanvraag</div>
+              <p>De onderstaande trainingen zijn beschikbaar als 5 daagse trainingen en op aanvraag beschikbaar.</p>
+                <div class="trainingen">
+                  <template is="dom-repeat" items="[[_rooster(trainingen.*, 0)]]">
+                    <div class="training">
+                      <a class="relatedlink" href="[[item.name]]">
+                        <div class$="[[_getClass(item.type)]]" style="min-height: 200px">
+                          <h3>[[item.title]]</h3>
+                          <p>[[item.shortdescription]]</p>
+                          <p style="font-style:italic;font-size:12px;">Doetinchem, [[item.date]]</p>
+                        </div>
+                      </a>
+                    </div>
+                  </template>
+                </div>
+
+          </div>
         </div>
 
-        
+         
               <!-- <h1>Trainingen</h1>
               <p>We bieden de onderstaande trainingen op aanvraag</p>
             </div>
@@ -113,11 +135,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       static get is() { return 'ico-traininglist'; }
       static get properties() {
         return {
+          months: { type: Array, value: [1,2,3,4,5,6,7,8,9,10,11,12] }, 
           trainingen: { type: Array, value: [] }
         }
       }
-      _rooster(val){
-        return val.base.sort((a, b) => a.sort - b.sort);// .filter(t => t.date != "op aanvraag");
+
+      _monthName(month){
+        return ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"][month-1];
+      }
+
+      _rooster(val, month){ 
+        return val.base.sort((a, b) => a.sort - b.sort).filter(t => t.month == month);
       }
 
       _aanvraag(val){
@@ -127,6 +155,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return "card-small " + (type == 'p' ? "pitstop": "");
       }
 
+      _hasContent(val, month) {
+        console.log("log:", val.base.filter(t => t.month == month).length > 0);
+        return val.base.filter(t => t.month == month).length > 0;
+      }
     }
 
     window.customElements.define(IcoTrainingList.is, IcoTrainingList);

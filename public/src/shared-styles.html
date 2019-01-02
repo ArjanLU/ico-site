@@ -30,10 +30,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
 
+      paper-button {
+        background-color:var(--accent-color);
+        color:white;
+      }
+
+      paper-button[disabled]  {
+        background-color:silver;
+        color:white;
+      }
+
+      paper-button iron-icon {
+        color:white !important;
+        margin-left:10px;
+      }
+
       p {
         line-height: 2;
         color: var(--primary-text-color);
-        max-width: 800px;
+        max-width: 400px;
+        margin-right:25px;
       }
 
       .card-small .inverse-link a {
@@ -41,8 +57,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         text-align:end;
       }
 
+      .full-width { max-width:none !important}
+
+
       .card-small .inverse-link {
         text-align:end;
+      }
+
+      .inverse-link {
+        text-align: left;
+        padding-right: 25px;
       }
 
       .inverse-link a {
@@ -72,6 +96,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         max-width: 500px;
         font-size: 30px;
         color: var(--app-primary-color);
+      }
+
+      #page {
+        display:flex;
+        justify-content:space-around;
+        width:100%;
+        flex-wrap:wrap;
       }
 
       #page-title {
@@ -211,7 +242,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .follow-header-text {
         font-size: calc(16px + 1.5vw);
         color: var(--text-primary-color);
-        max-width: 800px;
+        width:100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -232,7 +263,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         height: 45vh;
         font-size: 4.8vh;
         color: var(--text-primary-color);
-        max-width: 800px;
+        max-width: 600px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -331,9 +362,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .text-field {
         max-width: 600px;
-        margin: 75px 0;
+        margin: 50px 0;
       }
 
+      .text-field-header {
+        margin: 50px 50px 0 0;
+        max-width: 500px;
+        font-size: 30px;
+        color: var(--app-primary-color);
+      }
 
       .checklist {
         padding: 3vw 3vw;
@@ -424,6 +461,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .follow-content {
         padding: 3vw;
+        display:flex;
+        justify-content: flex-start;
+        flex-wrap:wrap;
       }
 
       .contact-cards {
@@ -434,6 +474,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .content-block {
         margin-top: 40px;
+        min-width: 300px;
+        max-width: 600px;
+        /* display: flex; */
+        padding: 25px;
       }
 
       /* hover image */
