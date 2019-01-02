@@ -39,13 +39,57 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <p>Naast een garantie dat de training bij inschrijvingen per definitie doorgaat, geven wij ook unieke 1-daagse verkorte trainingen om snel up to date te raken met de huidige ontwikkelingen op de gebieden waar we werkzaam zijn.</p>
       </div>
     </div>
+
+    <div class="content-block">
+        <div class="subtitle">Over onze trainingen</div>
+        <div class="title">
+            <h1>Locatie en faciliteiten</h1>
+          <p>Onze trainingen vinden plaats op onze locatie in Doetinchem. Er wordt voor lunch gezorgd gedurende de trainingsdagen. Zelf een laptop meenemen is een optie, maar wij kunnen uiteraard ook voorzien in de benodigde hardware.</p>
+          <p>Uiteraard kunnen wij ook trainingen plannen op uw locatie. Neem hiervoor contact met ons op via de onderstaande link.</p>
+          <div class="inverse-link"> <a name="contact" href="[[rootPath]]contact">Contacteer ons</a>
+            <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+          </div>
+        </div>
+      </div>
+
     <div class="content-block">
         <div class="subtitle">Onze</div>
         <div class="title">
             <h1>Nieuwste trainingen</h1>
+            <p>Wij voorzien altijd in de laatste versies van de meest populaire technologieën in ons vakgebied. Hieronder een overzicht van onze recent toegevoegde trainingen.</p>
    
+            <template is="dom-repeat" items="[[_highlighted(trainingen.*)]]">
+                <div class="training">
+                  <a class="relatedlink" href="[[item.name]]">
+                    <div class$="[[_getClass(item.type)]]" style="min-height: 200px">
+                      <h3>[[item.title]]</h3>
+                      <p>[[item.shortdescription]]</p>
+                      <p style="font-style:italic;font-size:12px;">Doetinchem, [[item.date]]</p>
+                    </div>
+                  </a>
+                </div>
+              </template>
         </div>
       </div>
+      <div class="content-block">
+          <div class="subtitle">Onze</div>
+          <div class="title">
+              <h1>Trainingen deze maand</h1>
+              <p>In de maand [[_monthName()]] staan de onderstaande trainingen gepland.</p>
+ 
+              <template is="dom-repeat" items="[[_rooster(trainingen.*)]]">
+                  <div class="training">
+                    <a class="relatedlink" href="[[item.name]]">
+                      <div class$="[[_getClass(item.type)]]" style="min-height: 200px">
+                        <h3>[[item.title]]</h3>
+                        <p>[[item.shortdescription]]</p>
+                        <p style="font-style:italic;font-size:12px;">Doetinchem, [[item.date]]</p>
+                      </div>
+                    </a>
+                  </div>
+                </template>
+          </div>
+        </div>
 </div>
 <ico-footer></ico-footer>
 </template>
@@ -53,6 +97,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script>
   class IcoTrainingPage extends Polymer.Element {
     static get is() { return 'ico-trainingpage'; }
+
+    static get properties() {
+        return {
+          trainingen: { type: Array, value: [] }
+        }
+      }
+
+    _rooster(val){
+      let month = new Date().getMonth() + 1;
+      return val.base.filter(t => t.month == month);
+    }
+    _highlighted(val){
+      return val.base.filter(t => t.highlight == 1);
+    }
+
+    _getClass(type) {
+        return "card-small " + (type == 'p' ? "pitstop": "");
+      }
+
+    _monthName(){
+      let month = new Date().getMonth();
+      let m = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"][month];
+      return m.toLowerCase();
+    }
   }
 
   window.customElements.define(IcoTrainingPage.is, IcoTrainingPage);
