@@ -97,7 +97,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <template is="dom-if" if="[[!smallscreen]]">
             <div class="menu" style="height:70px; display:flex;justify-content: center; align-items:center;padding-left:20px;">
-              <div style="display:flex;width:100%;justify-content:center;">
+              <div style="display:flex;width:100vw;justify-content:center;">
                 <a name="home" href="[[rootPath]]home">
                   <div main-title>
                     <img style="height:35px;padding-top:5px;" src="images/logo-iconica.svg" />
@@ -119,7 +119,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="home" role="main" scroll-target="document">
 
-          <ico-trainingpage name="trainingen"></ico-trainingpage>
+          <ico-trainingpage name="trainingen" trainingen="[[trainingen]]"></ico-trainingpage>
           <ico-traininglist name="traininglist" trainingen="[[trainingen]]"></ico-traininglist>
           <ico-home name="home"></ico-home>
           <ico-diensten name="diensten"></ico-diensten>
@@ -137,7 +137,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </div>
           </template>
         </iron-pages>
-
+        <ico-footer></ico-footer>
       </app-header-layout>
     </app-drawer-layout>
 
