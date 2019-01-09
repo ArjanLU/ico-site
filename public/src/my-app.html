@@ -205,10 +205,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _signup(e){
-        console.log("someone is signin up", e);
-        this.set('event', e.detail.event);
-        // redirect to thank you page
-        this.set('page', 'signup')
+        // console.log("someone is signin up", e);
+        // this.set('event', e.detail.event);
+        // // redirect to thank you page
+        // this.set('page', 'signup');
+        window.open(e.detail.url, '_blank');
       }
 
       _savesignup(e){

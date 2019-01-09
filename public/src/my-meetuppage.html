@@ -131,7 +131,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     static get is() { return 'ico-meetups'; }
 
     _signup(e){
-      this.dispatchEvent(new CustomEvent("signup", { detail:{ event:e.model.item, bubbles:true, composed:true}}));
+      this.dispatchEvent(new CustomEvent("signup", { detail:{ url:e.model.item.url, event:e.model.item, bubbles:true, composed:true}}));
     }
   }
 
