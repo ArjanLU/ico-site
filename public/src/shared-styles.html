@@ -411,13 +411,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .text-field {
-        max-width: 45vw;
         min-width: 300px;
         margin: 50px 0;
       }
 
       .content-block .title {
-        max-width: 45vw;
+        /* max-width: 45vw; */
         min-width: 300px;
         
       }
@@ -556,12 +555,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           display: block;
           width: 100%;
         }
+
+         
       }
 
       @media screen and (min-width: 900px) {
         .container {
           width: 33.33333%;
         }
+
+        .text-field {
+           max-width: 45vw;
+         }
+         .content-block .title {
+          max-width: 45vw;
+         }
+         
       }
 
       .container .title {
