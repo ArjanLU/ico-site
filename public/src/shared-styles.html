@@ -48,7 +48,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       p {
         line-height: 2;
         color: var(--primary-text-color);
-        max-width: 400px;
+        max-width: 750px;
         margin-right:25px;
       }
 
@@ -246,6 +246,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         flex-wrap: wrap;
       }
 
+      app-drawer-layout::after {
+          content: "";
+          opacity: 0.3;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          position: absolute;
+          z-index: -1;   
+          background-image:url('/images/logo-iconica.svg');
+          background-position: left; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover;
+      }
+ 
+
       .vacatures {
         background: var(--app-primary-color);
       }
@@ -395,7 +411,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .text-field {
-        max-width: 600px;
+        max-width: 45vw;
+        min-width: 600px;
         margin: 50px 0;
       }
 
@@ -515,7 +532,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .content-block {
         margin-top: 40px;
         min-width: 300px;
-        max-width: 600px;
+        /* max-width: 750px; */
         /* display: flex; */
         padding: 25px;
       }
