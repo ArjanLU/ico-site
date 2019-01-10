@@ -22,6 +22,8 @@
 <link rel="import" href="/src/my-database.html">
 <link rel="import" href="/src/my-home.html">
 <link rel="import" href="/src/my-cases.html">
+<link rel="import" href="/src/my-blog.html">
+<link rel="import" href="/src/my-blog-data.html">
 <link rel="import" href="/src/my-meetup-data.html">
 <link rel="import" href="/src/my-meetuppage.html">
 <link rel="import" href="/src/my-trainingpage.html">
@@ -40,7 +42,8 @@
   <template>
     <style include="shared-styles"></style>
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
-    <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
+    <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}" active="{{routeactive}}"></app-route>
+    <app-route route="{{subroute}}" pattern="/:selectedblog" data="{{subRouteData}}" tail="{{subSubRoute}}" active="{{subrouteactive}}"></app-route>
     </app-route>
     <app-drawer-layout fullbleed force-narrow id="drawerlayout">
       <!-- Drawer content -->
@@ -52,6 +55,7 @@
           <a name="trainingen" href="[[rootPath]]trainingen">Training</a>
           <a name="meetups" href="[[rootPath]]meetups">Meetups</a>
           <a name="cases" href="[[rootPath]]cases">Cases</a>
+          <a name="blog" href="[[rootPath]]blog">Blog</a>
           <a name="over-ons" href="[[rootPath]]over-ons">Over ons</a>
           <div style="display:flex; flex-direction:row; align-items: center;"><a name="vacatures" href="[[rootPath]]vacatures">Vacatures</a>
             <iron-icon icon="my-icons:coffee"></iron-icon>
@@ -85,6 +89,7 @@
                   <a href="[[rootPath]]trainingen">Trainingen</a>
                   <a href="[[rootPath]]meetups">Meetups</a>
                   <a href="[[rootPath]]cases">Cases</a>
+                  <a href="[[rootPath]]blogs">Blog</a>
                   <a href="[[rootPath]]vacatures">Vacatures</a>
                   <a href="[[rootPath]]over-ons">Over ons</a>
                 </div>
@@ -100,10 +105,11 @@
           <ico-home name="home"></ico-home>
           <ico-diensten name="diensten"></ico-diensten>
           <ico-cases name="cases"></ico-cases>
+          <ico-blog name="blog" blogarticles="[[blogarticles]]" blogitem="[[selectedblog]]"></ico-blog>
           <ico-over-ons name="over-ons"></ico-over-ons>
           <ico-contact name="contact"></ico-contact>
           <ico-vacatures name="vacatures"></ico-vacatures>
-          <ico-meetups name="meetups" meetups="[[meetups]]" on-signup="_signupMeetup"></ico-meetups>
+          <ico-meetups name="meetups" meetups="[[meetupdata]]" on-signup="_signupMeetup"></ico-meetups>
           <ico-signup name="signup" event="[[event]]" on-signup="_savesignup"></ico-signup> 
           <ico-thanks name="thanks" event="[[event]]" on-home="_goHome"></ico-thanks> 
           <my-view404 name="view404"></my-view404>
@@ -117,9 +123,12 @@
       </app-header-layout>
     </app-drawer-layout>
 
-    <ico-trainingdata trainingen="{{trainingen}}"></ico-trainingdata>
-    <ico-meetupdata trainingen="{{meetups}}"></ico-meetupdata>
-    <ico-database id="database"></ico-database>
+    <ico-blogdata id="blogdata" blogarticles="[[blogarticles]]"></ico-blogdata>
+    <ico-trainingdata trainingen="[[trainingen]]"></ico-trainingdata>
+    <ico-meetupdata meetups="{{meetupdata}}"></ico-meetupdata>
+
+    <ico-database id="database" blogarticles="{{blogarticles}}" trainingen="{{trainingen}}" meetupdata="{{meetupdata}}"></ico-database>
+
     <iron-media-query query="(max-width:768px)" query-matches="{{smallscreen}}"></iron-media-query>
 
   </template>
@@ -143,7 +152,7 @@
 
       static get observers() {
         return [
-          '_routePageChanged(routeData.page)',
+          '_routePageChanged(routeData.*, subRouteData.*)',
         ];
       }
       connectedCallback() {
@@ -153,19 +162,25 @@
         setTimeout(() => {
           this.page = "";
           this.set('page', this.routeData.page);
+          this.set('detail', this.subRouteData.detail);
         }, 1);
       }
 
-      _routePageChanged(page) {
+      _routePageChanged(data, subdata) {
         // If no page was found in the route data, page will be an empty string.
         // Default to 'view1' in that case.
-        this.page = page || 'home';
+        this.set('page', data.base.page || 'home');
+        if (this.subrouteactive)
+          this.set('selectedblog', this.$.blogdata.getBlogByTitle(subdata.base.detail || ''));
+        else 
+          this.set('selectedblog', {});
+
+        console.log("settings", this.page, this.blog)
 
         // Close a non-persistent drawer when the page & route are changed.
         if (!this.$.drawer.persistent) {
           this.$.drawer.close();
         }
-
         this._scrollUp();
       }
 

@@ -1,0 +1,31 @@
+
+
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="ico-blogdata">
+  <template>
+  </template>
+
+    <script>
+    class MyBlogArticles extends Polymer.Element {
+        constructor(){
+            super();
+        };
+
+        static get is() { return 'ico-blogdata'; }
+        static get properties(){
+            return {
+                blogarticles:{type:Array, value: []}
+            }
+        }
+
+        getBlogByTitle(title){
+            return this.blogarticles.find(a => a.title.includes(title));
+        }
+    }
+
+    window.customElements.define(MyBlogArticles.is, MyBlogArticles);
+    </script>
+</dom-module>
