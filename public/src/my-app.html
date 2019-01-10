@@ -1,15 +1,4 @@
-<!--
-@license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
@@ -47,20 +36,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="/src/my-smartbadge.html">
 <link rel="import" href="/src/my-view404.html">
 
-<link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-
-
-
 <dom-module id="my-app">
   <template>
-    <style include="shared-styles">
-    </style>
-
+    <style include="shared-styles"></style>
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
-
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
     </app-route>
-
     <app-drawer-layout fullbleed force-narrow id="drawerlayout">
       <!-- Drawer content -->
       <app-drawer id="drawer" slot="drawer">
@@ -75,7 +56,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div style="display:flex; flex-direction:row; align-items: center;"><a name="vacatures" href="[[rootPath]]vacatures">Vacatures</a>
             <iron-icon icon="my-icons:coffee"></iron-icon>
           </div>
-          <!-- <a name="contact" href="[[rootPath]]contact">Contact</a> -->
         </iron-selector>
       </app-drawer>
 
@@ -91,10 +71,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </a>
             </div>
           </template>
-
           </div>
-          <!-- <a name="contact" href="[[rootPath]]contact"><iron-icon icon="my-icons:coffee"></iron-icon> </a> -->
-
           <template is="dom-if" if="[[!smallscreen]]">
             <div class="menu" style="height:70px; display:flex;justify-content: center; align-items:center;padding-left:20px;">
               <div style="display:flex;width:100vw;justify-content:center;">
@@ -110,7 +87,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   <a href="[[rootPath]]cases">Cases</a>
                   <a href="[[rootPath]]vacatures">Vacatures</a>
                   <a href="[[rootPath]]over-ons">Over ons</a>
-                  <!-- <a href="[[rootPath]]contact">Contact</a> -->
                 </div>
               </div>
           </template>
@@ -157,13 +133,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           page: {
             type: String,
             reflectToAttribute: true,
-            // observer: '_pageChanged',
           },
-          event:{ type:Object, value:{name:'test'}},
+          event:{ type:Object, value:{name:''}},
           routeData: Object,
           subroute: String,
-          // This shouldn't be neccessary, but the Analyzer isn't picking up
-          // Polymer.Element#rootPath
           rootPath: String,
         };
       }
@@ -208,7 +181,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         window.open(e.detail.url, '_blank');
       }
 
-      _signup(e){
+      _signupTraining(e){
         this.set('event', e.detail.event);
         // redirect to thank you page
         this.set('page', 'signup');
