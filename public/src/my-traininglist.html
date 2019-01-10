@@ -74,29 +74,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           </div>
         </div>
-
-         
-              <!-- <h1>Trainingen</h1>
-              <p>We bieden de onderstaande trainingen op aanvraag</p>
-            </div>
-            <div>
-              <div class="trainingen">
-                <template is="dom-repeat" items="[[_aanvraag(trainingen.*)]]">
-                  <div class="training">
-                    <a class="relatedlink" href="[[item.name]]">
-                      <div class="card-small">
-                        <h3>[[item.title]]</h3>
-                        <p>[[item.shortdescription]]</p>
-                        <p style="font-style:italic;font-size:12px;">Doetinchem, [[item.date]]</p>
-                      </div>
-                    </a>
-                  </div>
-                </template>
-              </div>
-    
-            </div> -->
-
-     
     </div>
   </template>
 
@@ -126,7 +103,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _hasContent(val, month) {
-        console.log("log:", val.base.filter(t => t.month == month).length > 0);
         return val.base.filter(t => t.month == month).length > 0;
       }
     }
