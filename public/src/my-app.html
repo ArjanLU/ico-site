@@ -89,7 +89,7 @@
                   <a href="[[rootPath]]trainingen">Trainingen</a>
                   <a href="[[rootPath]]meetups">Meetups</a>
                   <a href="[[rootPath]]cases">Cases</a>
-                  <a href="[[rootPath]]blogs">Blog</a>
+                  <a href="[[rootPath]]blog ">Blog</a>
                   <a href="[[rootPath]]vacatures">Vacatures</a>
                   <a href="[[rootPath]]over-ons">Over ons</a>
                 </div>
@@ -105,7 +105,7 @@
           <ico-home name="home"></ico-home>
           <ico-diensten name="diensten"></ico-diensten>
           <ico-cases name="cases"></ico-cases>
-          <ico-blog name="blog" blogarticles="[[blogarticles]]" blogitem="[[selectedblog]]"></ico-blog>
+          <ico-blog name="blog" blogarticles="[[blogarticles]]" blogitem="[[selectedblog]]" on-clap="_saveClap"></ico-blog>
           <ico-over-ons name="over-ons"></ico-over-ons>
           <ico-contact name="contact"></ico-contact>
           <ico-vacatures name="vacatures"></ico-vacatures>
@@ -194,6 +194,11 @@
 
       _signupMeetup(e){
         window.open(e.detail.url, '_blank');
+      }
+
+      _saveClap(e){
+        console.log('saving clag for', e)
+        this.$.database.saveClap(e.detail.blogitem);
       }
 
       _signupTraining(e){

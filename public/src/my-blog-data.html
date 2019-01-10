@@ -24,6 +24,10 @@
         getBlogByTitle(title){
             return this.blogarticles.find(a => a.title.includes(title));
         }
+
+        saveClap(id){
+            
+        }
     }
 
     window.customElements.define(MyBlogArticles.is, MyBlogArticles);
