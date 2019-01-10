@@ -43,7 +43,7 @@
     <style include="shared-styles"></style>
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}" active="{{routeactive}}"></app-route>
-    <app-route route="{{subroute}}" pattern="/:selectedblog" data="{{subRouteData}}" tail="{{subSubRoute}}" active="{{subrouteactive}}"></app-route>
+    <app-route route="{{subroute}}" pattern="/:title" data="{{subRouteData}}" tail="{{subSubRoute}}" active="{{subrouteactive}}"></app-route>
     </app-route>
     <app-drawer-layout fullbleed force-narrow id="drawerlayout">
       <!-- Drawer content -->
@@ -139,6 +139,7 @@
 
       static get properties() {
         return {
+          blogarticles: { type:Array, value:[], notify:true},
           page: {
             type: String,
             reflectToAttribute: true,
@@ -153,8 +154,19 @@
       static get observers() {
         return [
           '_routePageChanged(routeData.*, subRouteData.*)',
+          '_blogArticlesChanged(blogarticles)'
         ];
       }
+
+      _blogArticlesChanged(change){
+        if (this.selectedblog) {
+          this.set('selectedblog', this.$.blogdata.getBlogByTitle(this.selectedblog.title || ''));
+        }
+        else if(this.subRouteData.title)
+          this.set('selectedblog', this.$.blogdata.getBlogByTitle(this.subRouteData.title || ''));
+      }
+
+
       connectedCallback() {
         super.connectedCallback();
         // hack to reset the page to rerender the correct iron page from deeplink..
@@ -170,12 +182,11 @@
         // If no page was found in the route data, page will be an empty string.
         // Default to 'view1' in that case.
         this.set('page', data.base.page || 'home');
-        if (this.subrouteactive)
-          this.set('selectedblog', this.$.blogdata.getBlogByTitle(subdata.base.detail || ''));
-        else 
+        if (this.subrouteactive) {
+          this.set('selectedblog', this.$.blogdata.getBlogByTitle(subdata.base.title || ''));
+        } else {
           this.set('selectedblog', {});
-
-        console.log("settings", this.page, this.blog)
+        }
 
         // Close a non-persistent drawer when the page & route are changed.
         if (!this.$.drawer.persistent) {
@@ -197,7 +208,6 @@
       }
 
       _saveClap(e){
-        console.log('saving clag for', e)
         this.$.database.saveClap(e.detail.blogitem);
       }
 

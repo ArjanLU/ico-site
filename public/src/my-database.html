@@ -29,17 +29,14 @@ class IcoDatabase extends Polymer.Element
 
     connectedCallback(){
         firebase.database().ref("blogs").on('value',(data) => {
-            console.log("setting blogarticles from firebase", data.val());
             this.blogkeys = Object.keys(data.val());
-            this.blogarticles = Object.values(data.val());
+            this.set('blogarticles',JSON.parse(JSON.stringify(Object.values(data.val()))));
         });
         firebase.database().ref("trainingen").on('value',(data) => {
-            console.log("setting trainingen from firebase", data.val());
-            this.trainingen = Object.values(data.val());
+            this.set('trainingen', JSON.parse(JSON.stringify(Object.values(data.val()))));
         });
         firebase.database().ref("meetups").on('value',(data) => {
-            console.log("setting meetups from firebase", data.val());
-            this.meetupdata = Object.values(data.val());
+            this.set('meetupdata', JSON.parse(JSON.stringify(Object.values(data.val()))));
         });
     }
 
