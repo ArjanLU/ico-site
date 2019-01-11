@@ -1,0 +1,189 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="ico-blog">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+      .follow-header{
+        background:var(--accent-color);
+      }
+
+    ol {
+   list-style: none;
+ }
+  li {
+   counter-increment: item;
+   margin-bottom: 5px;
+ }
+
+li:before {
+   margin-right: 10px;
+   content: counter(item);
+   color: var(--app-secondary-color);
+   width: 1.2em;
+   font-size:24px;
+ }
+    </style>
+
+<app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subRoute}}" active="{{routeActive}}"></app-route>
+
+  <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="blog" role="main" scroll-target="document">
+      <div class="training-page" name="blogitem">
+          <template is="dom-if" if="[[blogitem]]">
+          <div id="case-header">
+          </div>
+        <div class="case-content">
+          <div class="case-intro">
+            <h1>[[blogitem.title]]</h1>
+            <p>[[blogitem.subtitle]]</p>
+            <div class="subtitle" style="font-style:italic;font-size:0.8em">Gepubliceerd op [[_formatDate(blogitem.created)]] door [[blogitem.author]]</div>
+              <div class="link"> 
+                <a name="cases" on-click="_back">
+                  <iron-icon icon="my-icons:arrow-back"></iron-icon>
+                  Terug 
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="follow-content">
+            <div class="home-text">
+              <div class="text-field fullwidth">
+                <div class="subtitle"></div>
+                <div class="title"><h1>Inleiding</h1>
+              </div>
+              <p>[[blogitem.shortdescription]]</p>
+              <div style="display:contents" inner-H-T-M-L="[[_formatContent(blogitem.content)]]"></div>
+              <div class="feedbackbar" style=" display: flex; justify-content: flex-start; padding-right: 50px;">
+                <template is="dom-repeat" items="[[blogitem.tags]]">
+                  <div class="blogtag">[[item]]</div>
+                </template>
+                <div style="flex:1"></div>
+                <img src="./images/clap.png" height="24" on-click="_clap"/><span style="margin-left:16px">[[blogitem.claps]]</span></div>
+            </div>
+            </div>
+
+            <div class="inverse-link"> 
+            <a name="cases" on-click="_back">
+              <iron-icon icon="my-icons:arrow-back"></iron-icon>
+              Terug 
+            </a>
+            </div>     
+          </div>
+        </template>
+      </div>
+    
+      <div name="blog">
+          <div class="follow-header">
+              <div class="follow-header-text">
+                <div>
+                  Professionals van Iconica praten over techniek
+                </div>
+              </div>
+          </div>
+        <template is="dom-repeat" items="[[blogarticles]]">
+        <div class="follow-content">
+          <div class="home-text">
+            <div class="text-field">
+              <div class="subtitle">[[item.subtitle]]</div>
+              <div class="title"><h1>[[item.title]]</h1>
+              </div>
+              <p>[[item.shortdescription]]</p>
+              <div class="subtitle" style="font-style:italic;font-size:0.8em">Gepubliceerd op [[_formatDate(item.created)]] door [[item.author]]</div>
+              <div class="inverse-link"> <a name="more" on-click="_selectBlog">Lees meer...</a>
+                <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+  </iron-pages>
+  <div id="page-footer">
+    <div class="content-block" style="max-width:none;display:flex;">
+        <div class="contact-cards">
+            <a name="cases" href="[[rootPath]]cases">
+          <div class="card-big">
+            <h1>Ons werk</h1>
+            <div class="link"> Bekijk cases
+              <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+            </div>
+          </div>
+        </a>
+        <a name="cases" href="[[rootPath]]over-ons">
+          <div class="card-big">
+            <h1>Ons team</h1>
+            <div class="link"> Bekijk ons team
+              <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+            </div>   
+          </div>
+        </a>
+        </div>
+    </div>
+  </div>
+
+</template>
+
+<script>
+  class MyBlog extends Polymer.Element {
+    static get is() { return 'ico-blog'; }
+    static get observers() {
+      return ['_routeChanged(route.*, blogarticles.*)']
+    }
+    static get properties () {
+      return {
+        blogitem:{ type:Object, value:{} },
+        blogarticles:{ type:Array, value:[] }
+      }
+    }
+
+    _routeChanged(route){
+      if (this.routeData.page != undefined && this.routeData.page != "") {
+        this.set('blogitem',this.blogarticles.find(a => a.title.includes(this.routeData.page)));
+      }
+      this.set("page", this.routeActive && this.routeData.page ? "blogitem" :"blog");
+
+    }
+
+    _formatContent(content){
+      var con = "";
+      if (content != undefined)
+        con = content.replace(/\[\*/g, '<').replace(/\*\]/g, '>');
+      return con;
+    }
+
+    _formatDate(date){
+      return new Intl.DateTimeFormat('nl-NL', {}).format(date)
+    }
+
+    _back(){   
+      this.set('route.path', "");
+    }
+
+    _selectBlog(e){
+      this.set('route.path', "/" + e.model.item.title);
+    }
+
+    _clap(){
+      if (!this.blogitem.claps)
+        this.blogitem.claps = 0;
+      this.set('blogitem.claps', this.blogitem.claps + 1);
+      this.dispatchEvent(new CustomEvent('clap', { detail:{ blogitem:this.blogitem}, composed:true, bubbles:true}));
+    }
+  }
+
+
+  window.customElements.define(MyBlog.is, MyBlog);
+</script>
+</dom-module>

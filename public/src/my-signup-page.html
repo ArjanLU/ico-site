@@ -13,7 +13,7 @@
                   <div class="subtitle">Inschrijven voor [[event.title]] op [[event.date]]!</div>
                   <div class="title"><h1>Nog één stapje</h1></div>
                   <p>Vul hieronder je email adres in en wij nemen zo spoedig mogelijk contact met je op om de inschrijving te bevestigen.</p>
-                 <paper-input invalid="{{invalid}}"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" always-float-label required label="Jouw email adres" value="{{email}}" auto-validate></paper-input>
+                 <paper-input invalid="{{invalid}}"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,10}$" always-float-label required label="Jouw email adres" value="{{email}}" auto-validate></paper-input>
                   <paper-button raised  icon="menu" on-tap="_signup" disabled$="[[_isValid(invalid)]]">Schrijf mij in <iron-icon icon="my-icons:arrow-forward"></iron-icon></paper-button>
 
                 </div>

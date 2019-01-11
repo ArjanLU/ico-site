@@ -3,7 +3,13 @@
 <script>
 class IcoDatabase extends Polymer.Element
 {
-    static get properties(){}
+    static get properties(){
+        return { 
+            blogarticles:{type:Array, value:[], notify:true},
+            trainingen:{type:Array, value:[], notify:true},
+            meetupdata:{type:Array, value:[], notify:true}
+        }
+    }
     static get is(){
         return 'ico-database';
     }
@@ -21,7 +27,26 @@ class IcoDatabase extends Polymer.Element
         });
     }
 
-    connectedCallback(){}
+    connectedCallback(){
+        firebase.database().ref("blogs").on('value',(data) => {
+            this.blogkeys = Object.keys(data.val());
+            this.set('blogarticles',JSON.parse(JSON.stringify(Object.values(data.val()))));
+        });
+        firebase.database().ref("trainingen").on('value',(data) => {
+            this.set('trainingen', JSON.parse(JSON.stringify(Object.values(data.val()))));
+        });
+        firebase.database().ref("meetups").on('value',(data) => {
+            this.set('meetupdata', JSON.parse(JSON.stringify(Object.values(data.val()))));
+        });
+    }
+
+    saveClap(blogitem){
+        if (blogitem) {
+            let blogkey = this.blogkeys[this.blogarticles.indexOf(this.blogarticles.find(b => b.id == blogitem.id))];
+            if (blogkey)
+               firebase.database().ref("blogs/" + blogkey).set(blogitem);
+        }
+    }
 
     saveSignup(event, user){
         firebase.database().ref("signups").push({

@@ -32,7 +32,6 @@ self.addEventListener('install', e => {
 
 
 self.addEventListener('fetch', function(evt) {
-  console.log('The service worker is serving the asset.');
  // evt.respondWith(fromCache(evt.request));
  return fetch(evt.request).then(function (response) {
     return response;

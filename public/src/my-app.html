@@ -1,15 +1,4 @@
-<!--
-@license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
@@ -33,6 +22,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="/src/my-database.html">
 <link rel="import" href="/src/my-home.html">
 <link rel="import" href="/src/my-cases.html">
+<link rel="import" href="/src/my-blog.html">
+<link rel="import" href="/src/my-blog-data.html">
 <link rel="import" href="/src/my-meetup-data.html">
 <link rel="import" href="/src/my-meetuppage.html">
 <link rel="import" href="/src/my-trainingpage.html">
@@ -47,20 +38,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="/src/my-smartbadge.html">
 <link rel="import" href="/src/my-view404.html">
 
-<link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-
-
-
 <dom-module id="my-app">
   <template>
-    <style include="shared-styles">
-    </style>
-
+    <style include="shared-styles"></style>
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
-
-    <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
+    <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}" active="{{routeactive}}"></app-route>
     </app-route>
-
     <app-drawer-layout fullbleed force-narrow id="drawerlayout">
       <!-- Drawer content -->
       <app-drawer id="drawer" slot="drawer">
@@ -71,11 +54,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a name="trainingen" href="[[rootPath]]trainingen">Training</a>
           <a name="meetups" href="[[rootPath]]meetups">Meetups</a>
           <a name="cases" href="[[rootPath]]cases">Cases</a>
+          <a name="blog" href="[[rootPath]]blog">Blog</a>
           <a name="over-ons" href="[[rootPath]]over-ons">Over ons</a>
           <div style="display:flex; flex-direction:row; align-items: center;"><a name="vacatures" href="[[rootPath]]vacatures">Vacatures</a>
             <iron-icon icon="my-icons:coffee"></iron-icon>
           </div>
-          <!-- <a name="contact" href="[[rootPath]]contact">Contact</a> -->
         </iron-selector>
       </app-drawer>
 
@@ -91,10 +74,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </a>
             </div>
           </template>
-
           </div>
-          <!-- <a name="contact" href="[[rootPath]]contact"><iron-icon icon="my-icons:coffee"></iron-icon> </a> -->
-
           <template is="dom-if" if="[[!smallscreen]]">
             <div class="menu" style="height:70px; display:flex;justify-content: center; align-items:center;padding-left:20px;">
               <div style="display:flex;width:100vw;justify-content:center;">
@@ -108,9 +88,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   <a href="[[rootPath]]trainingen">Trainingen</a>
                   <a href="[[rootPath]]meetups">Meetups</a>
                   <a href="[[rootPath]]cases">Cases</a>
+                  <a href="[[rootPath]]blog ">Blog</a>
                   <a href="[[rootPath]]vacatures">Vacatures</a>
                   <a href="[[rootPath]]over-ons">Over ons</a>
-                  <!-- <a href="[[rootPath]]contact">Contact</a> -->
                 </div>
               </div>
           </template>
@@ -124,16 +104,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <ico-home name="home"></ico-home>
           <ico-diensten name="diensten"></ico-diensten>
           <ico-cases name="cases"></ico-cases>
+          <ico-blog name="blog" blogarticles="[[blogarticles]]" on-clap="_saveClap" route="{{subroute}}"></ico-blog>
           <ico-over-ons name="over-ons"></ico-over-ons>
           <ico-contact name="contact"></ico-contact>
           <ico-vacatures name="vacatures"></ico-vacatures>
-          <ico-meetups name="meetups" meetups="[[meetups]]" on-signup="_signup"></ico-meetups>
+          <ico-meetups name="meetups" meetups="[[meetupdata]]" on-signup="_signupMeetup"></ico-meetups>
           <ico-signup name="signup" event="[[event]]" on-signup="_savesignup"></ico-signup> 
           <ico-thanks name="thanks" event="[[event]]" on-home="_goHome"></ico-thanks> 
           <my-view404 name="view404"></my-view404>
           <ico-smartbadge name="smartbadge"> </ico-smartbadge>
           <template is="dom-repeat" items="[[trainingen]]">
-            <ico-training name$="[[item.name]]" training="[[item]]" on-signup="_signup">
+            <ico-training name$="[[item.name]]" training="[[item]]" on-signup="_signupTraining">
               </div>
           </template>
         </iron-pages>
@@ -141,9 +122,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </app-header-layout>
     </app-drawer-layout>
 
-    <ico-trainingdata trainingen="{{trainingen}}"></ico-trainingdata>
-    <ico-meetupdata trainingen="{{meetups}}"></ico-meetupdata>
-    <ico-database id="database"></ico-database>
+    <ico-blogdata id="blogdata" blogarticles="[[blogarticles]]"></ico-blogdata>
+    <ico-trainingdata trainingen="[[trainingen]]"></ico-trainingdata>
+    <ico-meetupdata meetups="{{meetupdata}}"></ico-meetupdata>
+
+    <ico-database id="database" blogarticles="{{blogarticles}}" trainingen="{{trainingen}}" meetupdata="{{meetupdata}}"></ico-database>
+
     <iron-media-query query="(max-width:768px)" query-matches="{{smallscreen}}"></iron-media-query>
 
   </template>
@@ -154,25 +138,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       static get properties() {
         return {
+          blogarticles: { type:Array, value:[], notify:true},
           page: {
             type: String,
             reflectToAttribute: true,
-            // observer: '_pageChanged',
           },
-          event:{ type:Object, value:{name:'test'}},
+          event:{ type:Object, value:{name:''}},
           routeData: Object,
           subroute: String,
-          // This shouldn't be neccessary, but the Analyzer isn't picking up
-          // Polymer.Element#rootPath
           rootPath: String,
         };
       }
 
       static get observers() {
         return [
-          '_routePageChanged(routeData.page)',
+          '_routePageChanged(routeData.*, subRouteData.*)'
         ];
       }
+
       connectedCallback() {
         super.connectedCallback();
         // hack to reset the page to rerender the correct iron page from deeplink..
@@ -183,16 +166,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }, 1);
       }
 
-      _routePageChanged(page) {
+      _routePageChanged(data, subdata) {
         // If no page was found in the route data, page will be an empty string.
         // Default to 'view1' in that case.
-        this.page = page || 'home';
-
+        this.set('page', data.base.page || 'home');
         // Close a non-persistent drawer when the page & route are changed.
         if (!this.$.drawer.persistent) {
           this.$.drawer.close();
         }
-
         this._scrollUp();
       }
 
@@ -204,15 +185,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.page = 'view404';
       }
 
-      _signup(e){
-        console.log("someone is signin up", e);
+      _signupMeetup(e){
+        window.open(e.detail.url, '_blank');
+      }
+
+      _saveClap(e){
+        this.$.database.saveClap(e.detail.blogitem);
+      }
+
+      _signupTraining(e){
         this.set('event', e.detail.event);
         // redirect to thank you page
-        this.set('page', 'signup')
+        this.set('page', 'signup');
       }
 
       _savesignup(e){
-        console.log("someone is signin up", e);
         this.$.database.saveSignup(e.detail.event, e.detail.email);
         // redirect to thank you page
         this.set('page', 'thanks')
