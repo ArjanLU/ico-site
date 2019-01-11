@@ -43,7 +43,6 @@
     <style include="shared-styles"></style>
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}" active="{{routeactive}}"></app-route>
-    <app-route route="{{subroute}}" pattern="/:title" data="{{subRouteData}}" tail="{{subSubRoute}}" active="{{subrouteactive}}"></app-route>
     </app-route>
     <app-drawer-layout fullbleed force-narrow id="drawerlayout">
       <!-- Drawer content -->
@@ -105,7 +104,7 @@
           <ico-home name="home"></ico-home>
           <ico-diensten name="diensten"></ico-diensten>
           <ico-cases name="cases"></ico-cases>
-          <ico-blog name="blog" blogarticles="[[blogarticles]]" blogitem="[[selectedblog]]" on-clap="_saveClap"></ico-blog>
+          <ico-blog name="blog" blogarticles="[[blogarticles]]" on-clap="_saveClap" route="{{subroute}}"></ico-blog>
           <ico-over-ons name="over-ons"></ico-over-ons>
           <ico-contact name="contact"></ico-contact>
           <ico-vacatures name="vacatures"></ico-vacatures>
@@ -153,19 +152,9 @@
 
       static get observers() {
         return [
-          '_routePageChanged(routeData.*, subRouteData.*)',
-          '_blogArticlesChanged(blogarticles)'
+          '_routePageChanged(routeData.*, subRouteData.*)'
         ];
       }
-
-      _blogArticlesChanged(change){
-        if (this.selectedblog) {
-          this.set('selectedblog', this.$.blogdata.getBlogByTitle(this.selectedblog.title || ''));
-        }
-        else if(this.subRouteData.title)
-          this.set('selectedblog', this.$.blogdata.getBlogByTitle(this.subRouteData.title || ''));
-      }
-
 
       connectedCallback() {
         super.connectedCallback();
@@ -174,7 +163,6 @@
         setTimeout(() => {
           this.page = "";
           this.set('page', this.routeData.page);
-          this.set('detail', this.subRouteData.detail);
         }, 1);
       }
 
@@ -182,12 +170,6 @@
         // If no page was found in the route data, page will be an empty string.
         // Default to 'view1' in that case.
         this.set('page', data.base.page || 'home');
-        if (this.subrouteactive) {
-          this.set('selectedblog', this.$.blogdata.getBlogByTitle(subdata.base.title || ''));
-        } else {
-          this.set('selectedblog', {});
-        }
-
         // Close a non-persistent drawer when the page & route are changed.
         if (!this.$.drawer.persistent) {
           this.$.drawer.close();
