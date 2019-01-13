@@ -104,7 +104,7 @@
           <ico-home name="home"></ico-home>
           <ico-diensten name="diensten"></ico-diensten>
           <ico-cases name="cases"></ico-cases>
-          <ico-blog name="blog" blogarticles="[[blogarticles]]" on-clap="_saveClap" route="{{subroute}}"></ico-blog>
+          <ico-blog name="blog"  blogcomments="[[blogcomments]]" blogarticles="[[blogarticles]]" on-comment="_saveComment" on-clap="_saveClap" route="{{subroute}}"></ico-blog>
           <ico-over-ons name="over-ons"></ico-over-ons>
           <ico-contact name="contact"></ico-contact>
           <ico-vacatures name="vacatures"></ico-vacatures>
@@ -122,11 +122,11 @@
       </app-header-layout>
     </app-drawer-layout>
 
-    <ico-blogdata id="blogdata" blogarticles="[[blogarticles]]"></ico-blogdata>
+    <ico-blogdata id="blogdata" blogarticles="[[blogarticles]]" blogcomments="[[blogcomments]]"></ico-blogdata>
     <ico-trainingdata trainingen="[[trainingen]]"></ico-trainingdata>
     <ico-meetupdata meetups="{{meetupdata}}"></ico-meetupdata>
 
-    <ico-database id="database" blogarticles="{{blogarticles}}" trainingen="{{trainingen}}" meetupdata="{{meetupdata}}"></ico-database>
+    <ico-database id="database" blogcomments="{{blogcomments}}" blogarticles="{{blogarticles}}" trainingen="{{trainingen}}" meetupdata="{{meetupdata}}"></ico-database>
 
     <iron-media-query query="(max-width:768px)" query-matches="{{smallscreen}}"></iron-media-query>
 
@@ -191,6 +191,11 @@
 
       _saveClap(e){
         this.$.database.saveClap(e.detail.blogitem);
+      }
+
+      _saveComment(e){
+        this.$.database.saveComment(e.detail.comment);
+
       }
 
       _signupTraining(e){
