@@ -179,7 +179,10 @@ _reverse(arr){
     }
 
     _selectBlog(e){
+      console.log("blogitem selected");
       this.set('route.path', "/" + e.model.item.title);
+      this.dispatchEvent(new CustomEvent('blogitem-selected', { detail:{ blogitem:e.model.item}, composed:true, bubbles:true}));
+      this.set('blogcomments', this.blogcomments.slice());
     }
 
     _clap(){

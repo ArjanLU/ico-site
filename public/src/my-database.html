@@ -35,7 +35,6 @@ class IcoDatabase extends Polymer.Element
             this.set('blogarticles',JSON.parse(JSON.stringify(Object.values(data.val()))));
         });
         firebase.database().ref("blogcomments").on('value',(data) => {
-            this.blogkeys = Object.keys(data.val());
             this.set('blogcomments',JSON.parse(JSON.stringify(Object.values(data.val()))));
         });
         firebase.database().ref("trainingen").on('value',(data) => {
@@ -52,11 +51,10 @@ class IcoDatabase extends Polymer.Element
         }
     }
 
-
     saveClap(blogitem){
         if (blogitem) {
             let blogkey = this.blogkeys[this.blogarticles.indexOf(this.blogarticles.find(b => b.id == blogitem.id))];
-            if (blogkey)
+            if (blogkey && blogkey.startsWith("blog"))
                firebase.database().ref("blogs/" + blogkey).set(blogitem);
         }
     }
