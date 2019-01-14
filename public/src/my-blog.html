@@ -75,6 +75,9 @@ li:before {
                   <a href="[[_getUrlTwitter(blogitem)]]" style="font-size:24px">
                     <i class="fab fa-twitter" style="color:var(--accent-color)"></i>
                   </a>
+                  <a href="[[_getUrlFB(blogitem)]]" style="font-size:24px;margin-left:20px;">
+                    <i class="fab fa-facebook" style="color:var(--accent-color)"></i>
+                  </a>
                   <a href="[[_getUrlLinkedIn(blogitem)]]" style="font-size:24px;margin-left:20px;">
                     <i class="fab fa-linkedin" style="color:var(--accent-color)"></i>
                   </a>
@@ -169,7 +172,13 @@ _reverse(arr){
     _routeChanged(route){
       if (this.routeData.page != undefined && this.routeData.page != "") {
         let title = this.routeData.page.replace(/-/g," ");
-        this.set('blogitem',this.blogarticles.find(a => a.title.includes(title)));
+        let item = this.blogarticles.find(a => a.title.includes(title));
+        if (item) {
+          this.set('blogitem', item);
+          document.title = `${item.title}`;
+          document.querySelector("#description").content = item.subtitle;
+        }
+     
       }
       this.set("page", this.routeActive && this.routeData.page ? "blogitem" :"blog");
 
@@ -182,6 +191,15 @@ _reverse(arr){
       // ref_src=twsrc%5Etfw&related=twitterapi%2Ctwitter&text=Hello%20world&tw_p=tweetbutton&url=https%3A%2F%2Fexample.com%2Ffoo&via=twitterdev
       let title = this.blogitem.title.replace(/ /g, "-");
       return `https://twitter.com/intent/tweet?url=https://www.iconica.nl/blog/${title}&hashtags=${tags}`;
+    }
+
+    _getUrlFB(){
+      let tags = this.blogitem.tags.join(',');
+      // ?hashtags=demo&
+      //  original_referer=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftweet-button%2Foverview.html&
+      // ref_src=twsrc%5Etfw&related=twitterapi%2Ctwitter&text=Hello%20world&tw_p=tweetbutton&url=https%3A%2F%2Fexample.com%2Ffoo&via=twitterdev
+      let title = this.blogitem.title.replace(/ /g, "-");
+      return `https://www.facebook.com/sharer/sharer.php?u=https://www.iconica.nl/blog/${title}`;
     }
 
     _getUrlLinkedIn(){
