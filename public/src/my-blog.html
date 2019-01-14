@@ -37,6 +37,8 @@ li:before {
    font-size:24px;
  }
     </style>
+ 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subRoute}}" active="{{routeActive}}"></app-route>
   <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="blog" role="main" scroll-target="document">
@@ -65,12 +67,21 @@ li:before {
                 <div class="title"><h1>Inleiding</h1></div>
                 <p>[[blogitem.shortdescription]]</p>
                 <div style="display:contents" inner-H-T-M-L="[[_formatContent(blogitem.content)]]"></div>
-                <div class="feedbackbar" style=" display: flex; justify-content: flex-start; padding-right: 25px;padding-top:50px">
+                <div class="feedbackbar" style=" display: flex; align-items:center;justify-content: flex-start; padding-right: 25px;padding-top:50px">
                   <template is="dom-repeat" items="[[blogitem.tags]]">
                     <div class="blogtag">[[item]]</div>
                   </template>
                   <div style="flex:1"></div>
-                  <img src="./images/clap.png" style="padding: 0px 25px;" height="24" on-click="_clap"/><span>[[blogitem.claps]]</span>
+                  <a href="[[_getUrlTwitter(blogitem)]]" style="font-size:24px">
+                    <i class="fab fa-twitter" style="color:var(--accent-color)"></i>
+                  </a>
+                  <a href="[[_getUrlLinkedIn(blogitem)]]" style="font-size:24px;margin-left:20px;">
+                    <i class="fab fa-linkedin" style="color:var(--accent-color)"></i>
+                  </a>
+                  <a href="#" on-click="_clap" style="font-size:24px;margin-left:20px;margin-right:10px">
+                  <i class="fas fa-sign-language" style="color:var(--accent-color)"></i>
+                  </a>
+                  <span>[[blogitem.claps]]</span>
                 </div>
               </div>
             </div>
@@ -157,11 +168,31 @@ _reverse(arr){
 
     _routeChanged(route){
       if (this.routeData.page != undefined && this.routeData.page != "") {
-        this.set('blogitem',this.blogarticles.find(a => a.title.includes(this.routeData.page)));
+        let title = this.routeData.page.replace(/-/g," ");
+        this.set('blogitem',this.blogarticles.find(a => a.title.includes(title)));
       }
       this.set("page", this.routeActive && this.routeData.page ? "blogitem" :"blog");
 
     }
+
+    _getUrlTwitter(){
+      let tags = this.blogitem.tags.join(',');
+      // ?hashtags=demo&
+      //  original_referer=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftweet-button%2Foverview.html&
+      // ref_src=twsrc%5Etfw&related=twitterapi%2Ctwitter&text=Hello%20world&tw_p=tweetbutton&url=https%3A%2F%2Fexample.com%2Ffoo&via=twitterdev
+      let title = this.blogitem.title.replace(/ /g, "-");
+      return `https://twitter.com/intent/tweet?url=https://www.iconica.nl/blog/${title}&hashtags=${tags}`;
+    }
+
+    _getUrlLinkedIn(){
+      let tags = this.blogitem.tags.join(',');
+      // ?hashtags=demo&
+      //  original_referer=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftweet-button%2Foverview.html&
+      // ref_src=twsrc%5Etfw&related=twitterapi%2Ctwitter&text=Hello%20world&tw_p=tweetbutton&url=https%3A%2F%2Fexample.com%2Ffoo&via=twitterdev
+      let title = this.blogitem.title.replace(/ /g, "-");
+      return `https://www.linkedin.com/shareArticle?url=https://www.iconica.nl/blog/${title}&title=${title}&mini=true`;
+    }
+
 
     _formatContent(content){
       var con = "";
@@ -185,7 +216,8 @@ _reverse(arr){
       this.set('blogcomments', this.blogcomments.slice());
     }
 
-    _clap(){
+    _clap(e){
+      e.preventDefault();
       if (!this.blogitem.claps)
         this.blogitem.claps = 0;
       this.set('blogitem.claps', this.blogitem.claps + 1);
