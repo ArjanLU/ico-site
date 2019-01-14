@@ -5,7 +5,9 @@ class IcoDatabase extends Polymer.Element
 {
     static get properties(){
         return { 
+            blogcomments:{type:Array, value:[], notify:true},
             blogarticles:{type:Array, value:[], notify:true},
+            blogcomments:{type:Array, value:[], notify:true},
             trainingen:{type:Array, value:[], notify:true},
             meetupdata:{type:Array, value:[], notify:true}
         }
@@ -32,6 +34,9 @@ class IcoDatabase extends Polymer.Element
             this.blogkeys = Object.keys(data.val());
             this.set('blogarticles',JSON.parse(JSON.stringify(Object.values(data.val()))));
         });
+        firebase.database().ref("blogcomments").on('value',(data) => {
+            this.set('blogcomments',JSON.parse(JSON.stringify(Object.values(data.val()))));
+        });
         firebase.database().ref("trainingen").on('value',(data) => {
             this.set('trainingen', JSON.parse(JSON.stringify(Object.values(data.val()))));
         });
@@ -39,11 +44,17 @@ class IcoDatabase extends Polymer.Element
             this.set('meetupdata', JSON.parse(JSON.stringify(Object.values(data.val()))));
         });
     }
+    saveComment(comment) {
+        if (comment){
+            comment.created = Date.now();
+            firebase.database().ref("blogcomments").push(comment);
+        }
+    }
 
     saveClap(blogitem){
         if (blogitem) {
             let blogkey = this.blogkeys[this.blogarticles.indexOf(this.blogarticles.find(b => b.id == blogitem.id))];
-            if (blogkey)
+            if (blogkey && blogkey.startsWith("blog"))
                firebase.database().ref("blogs/" + blogkey).set(blogitem);
         }
     }
