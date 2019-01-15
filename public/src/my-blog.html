@@ -36,6 +36,13 @@ li:before {
    width: 1.2em;
    font-size:24px;
  }
+
+ .relatedlink {
+        color: silver;
+        text-decoration: none;
+      }
+
+
     </style>
  
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -103,11 +110,31 @@ li:before {
                   </template>
               </div>
                 <div style="width:100%;max-width:400px;margin:5px;display: flex;flex-wrap: wrap;justify-content: flex-end;">
+                     mening 
                      <textarea maxlength="150" style="width:100%" cols="40" rows="5" id="comment" value="{{content::input}}"></textarea><br/>
-                     <input style="width:100%;border:1px solid grey;height:20px" type="text" id="author" name="author" placeholder="naam" value="{{naam::keydown}}"></input>
+                     naam <input style="width:100%;border:1px solid grey;height:20px" type="text" id="author" name="author" value="{{naam::keydown}}"></input>
                      <paper-button disabled$="[[disabled]]" raised icon="menu" on-tap="_saveComment">Verstuur</paper-button>
                 </div>
             </div>
+
+            <div class="follow-content">
+              <div style="width:100%;" class="text-field fullwidth">
+                <div class="subtitle">Meer weten?</div>
+                <div class="title"><h1>Gerelateerde trainingen</h1></div>
+                   <p class="relatedlink">
+                <div style="display:flex;flex-wrap:wrap;width:50%;">
+                  <template is="dom-repeat" items="[[blogitem.relatedcourses]]">
+                    <div style="width:100%;padding:10px;border-bottom: 1px solid silver;">
+                      <a class="relatedlink" href="[[item]]">[[item]]</a>
+                    </div>
+                  </template>
+                </div>
+              </p>
+            </div>
+             
+          </div>
+
+
 
               <div class="inverse-link"  style="justify-content: flex-start;margin:25px;"> 
                 <a name="cases" on-click="_back">
