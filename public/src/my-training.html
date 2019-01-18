@@ -26,7 +26,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .relatedlink {
-        color: silver;
         text-decoration: none;
       }
 
@@ -40,28 +39,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .home-text {
         margin-left: 25px;
+        margin-top: 50px;
       }
 
       google-map {
         height: 300px;
         margin: 10px;
       }
+
+      .training-footer{
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-bottom: 50px;
+      }
     </style>
     <div class="follow-header training-color">
       <div class="follow-header-text">
+          <div style="justify-content: flex-start;"class="link">  
+              <a name="cases" href="[[rootPath]]traininglist">
+                <iron-icon icon="my-icons:arrow-back"></iron-icon>
+                Terug 
+              </a>
+            </div>
         <div style="font-size:calc(18px + 1.5vw);" inner-h-t-m-l="[[training.shortdescription]]"></div>
-        <div class="link">  
-          <a name="cases" href="[[rootPath]]traininglist">
-            <iron-icon icon="my-icons:arrow-back"></iron-icon>
-            Terug 
-          </a>
-        </div>
       </div>
       
     </div>
     <div class="training-page">
       <div>
-        <div class="summary">
+        <div class="summary sticky">
           <div class="keyword">
             <div class="label">
               Duur
@@ -82,7 +89,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </div> -->
           <div class="keyword">
             <div class="inverse-link">
-              <paper-button raised name="contact" on-tap="_signup">Schrijf mij in
+              <paper-button name="contact" on-tap="_signup">Schrijf mij in
                 <iron-icon icon="my-icons:arrow-forward"></iron-icon>
               </paper-button>
             </div>
@@ -120,6 +127,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </div>
         </div>
         <div class="home-text">
+          <div class="text-field">
           <div class="subtitle">De training</div>
           <div class="title">
             <h1>Wat ga je leren?</h1>
@@ -134,9 +142,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div>
           </p>
         </div>
+      </div>
 
-        <div class="text-field">
-          <div class="checklist">
+        <div class="home-text">
+          <div class="text-field">
             <div style="display: flex; flex-direction: column;">
               <div class="subtitle">Trainingen van Iconica</div>
               <div class="title">
@@ -161,16 +170,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </div>
               </div> -->
               <div class="keyword">
-                <div class="inverse-link">                           
-                  <paper-button name="contact" on-tap="_signup">Schrijf mij in
-                    <iron-icon icon="my-icons:arrow-forward"></iron-icon>
-                </paper-button>
-                </div>
+
               </div>
             </div>
           </div>
         </div>
-        <div class="home-text">
+        <div class="training-footer">
+                  <div class="home-text">
           <div class="text-field">
           <div class="title">
             <h1>Gerelateerde trainingen</h1>
@@ -196,7 +202,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div class="title">
             <h1>Neem contact met ons op!</h1>
           </div>
-          <div class="contact-cards training">
+          <div style="flex-direction: row;"class="contact-cards">
             <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#105;&#099;&#111;&#110;&#105;&#099;&#097;&#046;&#110;&#108;?SUBJECT=Lekkere kop koffie">
               <div class="card-small">
                 <h1>Mail ons</h1>
@@ -212,9 +218,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </div>
         </div>
       </div>
-    </div>
-    </div>
-    </div>
     </div>
   </template>
 

@@ -31,16 +31,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </div>
   
 <div class="follow-content" style="margin-bottom:100px">
-    <div class="content-block">
+    <div class="text-field">
       <div class="subtitle">Wij staan achter</div>
       <div class="title">
           <h1>Onze trainingen</h1>
         <p>Wij geven trainingen op het gebied van alles wat te maken heeft met ons werk. We verzorgen trainingen in alle lagen van de software development stack. Onze trainers zijn gekwalificeerd, gecertificeerd en wij beschikken over ruim 12 jaar ervaring op didactisch vlak. Net als onze andere diensten, zijn onze training van hoog niveau.</p>
         <p>Naast een garantie dat de training bij inschrijvingen per definitie doorgaat, geven wij ook unieke 1-daagse verkorte trainingen om snel up to date te raken met de huidige ontwikkelingen op de gebieden waar we werkzaam zijn.</p>
+
+      </div>
+      <div class="inverse-link"> <a name="contact" href="[[rootPath]]traininglist">Bekijk onze trainingen</a>
+        <iron-icon icon="my-icons:arrow-forward"></iron-icon>
       </div>
     </div>
 
-    <div class="content-block">
+    <div class="text-field">
         <div class="subtitle">Over onze trainingen</div>
         <div class="title">
             <h1>Locatie en faciliteiten</h1>
@@ -52,12 +56,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
       </div>
 
-    <div class="content-block">
+    <div class="text-field">
         <div class="subtitle">Onze</div>
         <div class="title">
             <h1>Nieuwste trainingen</h1>
             <p>Wij voorzien altijd in de laatste versies van de meest populaire technologieën in ons vakgebied. Hieronder een overzicht van onze recent toegevoegde trainingen.</p>
-   
+            <div class="inverse-link"> <a name="contact" href="[[rootPath]]traininglist">Bekijk alle trainingen</a>
+              <iron-icon icon="my-icons:arrow-forward"></iron-icon>
+            </div>
             <template is="dom-repeat" items="[[_highlighted(trainingen.*)]]">
                 <div class="training">
                   <a class="relatedlink" href="[[item.name]]">
@@ -71,7 +77,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </template>
         </div>
       </div>
-      <div class="content-block">
+      <div class="text-field">
           <div class="subtitle">Onze</div>
           <div class="title">
               <h1>Trainingen deze maand</h1>
