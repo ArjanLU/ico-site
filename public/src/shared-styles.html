@@ -31,25 +31,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       paper-button {
-        background-color:var(--accent-color);
-        color:white;
+        background-color: var(--accent-color);
+        color: white;
       }
 
-      paper-button[disabled]  {
-        background-color:silver;
-        color:white;
+      paper-button[disabled] {
+        background-color: silver;
+        color: white;
       }
 
       paper-button iron-icon {
-        color:white !important;
-        margin-left:10px;
+        color: white !important;
+        margin-left: 10px;
       }
 
       p {
         line-height: 2;
         color: var(--primary-text-color);
         max-width: 750px;
-        margin-right:25px;
+        margin-right: 25px;
       }
 
       h1,
@@ -66,6 +66,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
+        cursor: pointer;
       }
 
       .card-small .inverse-link a {
@@ -73,7 +74,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         text-align: end;
       }
 
-      .full-width { max-width:none !important}
+      .full-width {
+        max-width: none !important
+      }
 
 
       .card-small .inverse-link {
@@ -100,7 +103,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .subtitle {
         color: var(--app-secondary-color);
         padding: 0;
-        margin-bottom: 40px;
       }
 
       .subscribe {
@@ -120,10 +122,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       #page {
-        display:flex;
-        justify-content:flex-start;
-        margin:3vw;
-        flex-wrap:wrap;
+        display: flex;
+        justify-content: flex-start;
+        margin: 3vw;
+        flex-wrap: wrap;
       }
 
       #page-title {
@@ -155,9 +157,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background: var(--light-primary-color);
       }
 
-       #page-footer a:hover{
+      #page-footer a:hover {
         text-decoration: none;
-       }
+      }
 
       .contact-cards .card-small {
         margin: 19px;
@@ -233,11 +235,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --paper-input-container-input-color: #fff;
       }
 
-      .leave-message {
-        height: 240px;
-        justify-content: space-between;
-      }
-
       .follow-header {
         background: var(--app-secondary-color);
         height: 60vh;
@@ -248,20 +245,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       app-drawer-layout::after {
-          content: "";
-          opacity: 0.2;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          position: absolute;
-          z-index: -1;   
-          background-image:url('/images/logo-iconica.svg');
-          background-position: left; /* Center the image */
-        background-repeat: no-repeat; /* Do not repeat the image */
+        content: "";
+        opacity: 0.2;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+        background-image: url('/images/logo-iconica.svg');
+        background-position: left;
+        /* Center the image */
+        background-repeat: no-repeat;
+        /* Do not repeat the image */
         background-size: cover;
       }
- 
+
 
       .vacatures {
         background: var(--app-primary-color);
@@ -270,7 +269,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .training-color {
         background: var(--training-color);
       }
-
 
       .meetups-color {
         background: var(--app-primary-color);
@@ -283,19 +281,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .follow-header-text {
         font-size: calc(16px + 1.5vw);
         color: var(--text-primary-color);
-        width:100vw;
+        width: 100vw;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         margin: 18vh 5vh 5vh 5vh;
         font-weight: 100;
       }
-      .follow-header-text > div {
-        max-width:800px;
+
+      .follow-header-text>div {
+        max-width: 800px;
       }
 
-      .follow-header-text > div.link {
-        max-width:none;
+      .follow-header-text>div.link {
+        max-width: none;
       }
 
 
@@ -355,6 +354,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: var(--text-primary-color);
       }
 
+      .case-intro .link {
+        justify-content: flex-start;
+      }
+
 
       .split-content {
         display: flex;
@@ -409,7 +412,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .home-portfolio {
         margin-top: 100px;
-        width:100vw;
+        width: 100vw;
       }
 
       .text-field {
@@ -420,7 +423,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .content-block .title {
         /* max-width: 45vw; */
         min-width: 300px;
-        
+
       }
 
       .text-field-header {
@@ -465,10 +468,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .portfolio-items {
-        width:100%;
+        width: 100%;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        margin: 50px 0px;
       }
 
       .portfolio-items iron-icon {
@@ -487,7 +491,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         justify-content: flex-end;
       }
 
-     
+
       .portfolio-item-small {
         width: 30vw;
         height: 500px;
@@ -527,9 +531,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .follow-content {
         padding: 3vw;
-        display:flex;
+        display: flex;
         justify-content: flex-start;
-        flex-wrap:wrap;
+        flex-wrap: wrap;
       }
 
       .contact-cards {
@@ -538,7 +542,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .blogtag {
-        border:0px solid black;padding:5px;font-size:12px;margin:5px;border-radius:3px;box-shadow:#999 2px 2px 2px;background-color:var(--accent-color);color:white;
+        border: 0px solid black;
+        padding: 5px;
+        font-size: 12px;
+        margin: 5px;
+        border-radius: 3px;
+        box-shadow: #999 2px 2px 2px;
+        background-color: var(--accent-color);
+        color: white;
       }
 
       .content-block {
@@ -562,8 +573,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           display: block;
           width: 100%;
         }
-
-         
       }
 
       @media screen and (min-width: 900px) {
@@ -572,24 +581,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
 
         .text-field {
-           max-width: 45vw;
-         }
+          max-width: 40vw;
+          margin: 20px 35px;
+        }
 
-         .text-field.fullwidth {
+        .text-field.fullwidth {
           max-width: 100vw;
-         }
+        }
 
-         .text-field.fullwidth p {
+        .text-field.fullwidth p {
           max-width: 100vw;
-         }
+        }
 
-         .content-block .title {
+        .content-block .title {
           max-width: 45vw;
-         }
+        }
 
-         .content-block .title.fullwidth {
+        .content-block .title.fullwidth {
           max-width: 100vw;
-         }
+        }
 
 
       }
@@ -918,6 +928,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: black;
         font-weight: bold;
       }
+
       .relatedlink {
         color: var(--primary-text-color);
         text-decoration: none;
@@ -939,13 +950,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         border-bottom: 1px dotted silver;
       }
 
-      .pitstop{
-        background-color:#e1f5fe;
+      .pitstop {
+        background-color: #e1f5fe;
       }
 
       .training p {
         line-height: 1.2em;
         font-size: 14px;
+      }
+
+      .blog .text-field {
+        margin: 24px 24px 24px 0px;
+        padding: 16px;
+        color: #757575;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      }
+
+      .blog .text-field:hover {
+        box-shadow: 0 8px 11px 0 rgba(0, 0, 0, 0.18), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        transition-timing-function: ease-in;
+        transition: 0.4s;
+      }
+
+      .sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: -70px;
       }
     </style>
   </template>
