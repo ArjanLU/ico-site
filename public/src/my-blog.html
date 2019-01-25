@@ -96,7 +96,7 @@ li:before {
               <p>[[blogitem.subtitle]]</p>
              
                 <div class="subtitle" style="font-style:italic;font-size:0.8em">
-                  Het lezen van deze blog kost ongeveer [[blogitem.readlength]] van je tijd
+                  Ongeveer [[blogitem.readlength]] lezen
                 </div>
             </div>
           </div>
@@ -287,7 +287,7 @@ li:before {
 
       _getMinutes(scrolloffset){
         let minutes =  Math.max(0,parseInt(this.blogitem.readlength.substring(0,2)) - parseInt((scrolloffset / 500)));
-        return minutes > 1 ? `Nog ${minutes} minuten lezen` : minutes == 1 ? `Nog ${minutes} minuut..` : 'Bijna klaar';
+        return minutes > 1 ? `Nog ${minutes} minuten lezen` : minutes == 1 ? `Nog ${minutes} minuut..` : '';
       }
 
       _getClassName(scrolloffset){
