@@ -28,6 +28,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
    counter-increment: item;
    margin-bottom: 5px;
  }
+ .feedbackbar {
+   transition: all 0.43s ease-in-out;
+  color:transparent;
+  background-color:transparent;
+ }
+
+ .feedbackbar span {
+  color:#000;
+  
+ }
+ .showtitle 
+ {
+  background: #fff;
+   color:#000;
+ }
 
 li:before {
    margin-right: 10px;
@@ -65,6 +80,8 @@ li:before {
     <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="blog" role="main" scroll-target="document">
       <div class="training-page" name="blogitem">
 
+
+
         <template is="dom-if" if="[[blogitem]]">
           <div id="case-header"></div>
           <div class="case-content">
@@ -77,59 +94,75 @@ li:before {
                   </div>
               <h1>[[blogitem.title]]</h1>
               <p>[[blogitem.subtitle]]</p>
-              <div class="subtitle" style="font-style:italic;font-size:0.8em">Gepubliceerd op
-                [[_formatDate(blogitem.created)]] door [[blogitem.author]]</div>
- 
+             
+                <div class="subtitle" style="font-style:italic;font-size:0.8em">
+                  Het lezen van deze blog kost ongeveer [[blogitem.readlength]] van je tijd
+                </div>
             </div>
-            <div class="feedbackbar" style=" display: flex; align-items:center;justify-content: flex-start; padding-right: 25px;padding-top:50px">
-                <div style="flex:1"></div>
-                <a href="[[_getUrlTwitter(blogitem)]]" style="font-size:24px">
-                  <i class="fab fa-twitter" style="color:var(--accent-color)"></i>
-                </a>
-                <a href="[[_getUrlFB(blogitem)]]" target="_blank" style="font-size:24px;margin-left:15px;">
-                  <i class="fab fa-facebook" style="color:var(--accent-color)"></i>
-                </a>
-                <a href="[[_getUrlLinkedIn(blogitem)]]" style="font-size:24px;margin-left:15px;">
-                  <i class="fab fa-linkedin" style="color:var(--accent-color)"></i>
-                </a>
-                <a href="#" on-click="_clap" style="font-size:24px;margin-left:15px;margin-right:10px">
-                  <i class="fas fa-sign-language" style="color:var(--accent-color)"></i>
-                </a>
-                <span>[[blogitem.claps]]</span>
-              </div>
           </div>
+          <!-- <div style="position: absolute;height:100%;top:270px;width:100%;z-index:-1;"> -->
+          <div class$="[[_getClassName(scrolloffset)]]" style=" display: flex; align-items:center;justify-content: flex-start; padding:10px;flex-wrap:wrap;">
+            
+            <div  style="margin-left:10px;width:100vw;display:flex;align-items:center;justify-content: flex-start; ">
+              <!-- <template is="dom-repeat" items="[[blogitem.tags]]">
+                <div class="blogtag">[[item]]</div>
+              </template> -->
+              <div style="flex:1" >[[blogitem.title]] <div class="small italic">[[_getMinutes(scrolloffset)]]</div></div>
+            <a href="[[_getUrlTwitter(blogitem)]]" style="font-size:24px">
+              <i class="fab fa-twitter" style="color:var(--accent-color)"></i>
+            </a>
+            <a href="[[_getUrlFB(blogitem)]]" target="_blank" style="font-size:24px;margin-left:15px;">
+              <i class="fab fa-facebook" style="color:var(--accent-color)"></i>
+            </a>
+            <a href="[[_getUrlLinkedIn(blogitem)]]" style="font-size:24px;margin-left:15px;">
+              <i class="fab fa-linkedin" style="color:var(--accent-color)"></i>
+            </a>
+            <a href="#" on-click="_clap" style="font-size:24px;margin-left:15px;margin-right:10px">
+              <i class="fas fa-sign-language" style="color:var(--accent-color)"></i>
+            </a>
+            <span>[[blogitem.claps]]</span>
+          </div>           
+            </div>
+            
+        <!-- </div> -->
+          
 
           <div class="follow-content">
             <div class="home-text">
               <div class="text-field fullwidth">
                 <div class="subtitle"></div>
+                <div class="subtitle" style="font-style:italic;font-size:0.8em;margin-top:50px">Gepubliceerd op
+                  [[_formatDate(blogitem.created)]] door [[blogitem.author]]</div>
                 <div class="title">
                   <h1>Inleiding</h1>
                 </div>
                 <p>[[blogitem.shortdescription]]</p>
                 <div style="display:contents" inner-H-T-M-L="[[_formatContent(blogitem.content)]]"></div>
-                <div class="feedbackbar" style=" display: flex; align-items:center;justify-content: flex-start; padding-right: 25px;padding-top:50px">
-                  <template is="dom-repeat" items="[[blogitem.tags]]">
-                    <div class="blogtag">[[item]]</div>
-                  </template>
-                  <div style="flex:1"></div>
-                  <a href="[[_getUrlTwitter(blogitem)]]" style="font-size:24px">
-                    <i class="fab fa-twitter" style="color:var(--accent-color)"></i>
-                  </a>
-                  <a href="[[_getUrlFB(blogitem)]]" target="_blank" style="font-size:24px;margin-left:15px;">
-                    <i class="fab fa-facebook" style="color:var(--accent-color)"></i>
-                  </a>
-                  <a href="[[_getUrlLinkedIn(blogitem)]]" style="font-size:24px;margin-left:15px;">
-                    <i class="fab fa-linkedin" style="color:var(--accent-color)"></i>
-                  </a>
-                  <a href="#" on-click="_clap" style="font-size:24px;margin-left:15px;margin-right:10px">
-                    <i class="fas fa-sign-language" style="color:var(--accent-color)"></i>
-                  </a>
-                  <span>[[blogitem.claps]]</span>
-                </div>
-              </div>
+              </div> 
             </div>
           </div>
+          <div class="feedbackbar" style=" display: flex; align-items:center;justify-content: flex-start; padding-left:10px;padding-right: 10px;background-color:transparent;">
+            <template is="dom-repeat" items="[[blogitem.tags]]">
+              <div class="blogtag">[[item]]</div>
+            </template>
+            <div style="flex:1"></div>
+            <a href="[[_getUrlTwitter(blogitem)]]" style="font-size:24px">
+              <i class="fab fa-twitter" style="color:var(--accent-color)"></i>
+            </a>
+            <a href="[[_getUrlFB(blogitem)]]" target="_blank" style="font-size:24px;margin-left:15px;">
+              <i class="fab fa-facebook" style="color:var(--accent-color)"></i>
+            </a>
+            <a href="[[_getUrlLinkedIn(blogitem)]]" style="font-size:24px;margin-left:15px;">
+              <i class="fab fa-linkedin" style="color:var(--accent-color)"></i>
+            </a>
+            <a href="#" on-click="_clap" style="font-size:24px;margin-left:15px;margin-right:10px">
+              <i class="fas fa-sign-language" style="color:var(--accent-color)"></i>
+            </a>
+            <span>[[blogitem.claps]]</span>
+          </div>
+          <div class="subtitle" style="font-style:italic;font-size:0.8em;margin-top:50px">Gepubliceerd op
+            [[_formatDate(blogitem.created)]] door [[blogitem.author]]</div>           
+
 
 
           <div class="follow-content">
@@ -191,7 +224,7 @@ li:before {
             </div>
           </div>
         </div>
-        <template is="dom-repeat" items="[[blogarticles]]">
+        <template is="dom-repeat" items="[[_sort(blogarticles, blogarticles.*)]]">
           <div class="blog follow-content">
             <div class="home-text">
               <div class="text-field">
@@ -226,6 +259,7 @@ li:before {
           disabled: { type: Boolean, value: false },
           naam: { type: String, value: '' },
           content: { type: String, value: '' },
+          scrolloffset: { type: Number, value: -1 },
         }
       }
 
@@ -251,31 +285,56 @@ li:before {
 
       }
 
+      _getMinutes(scrolloffset){
+        let minutes =  Math.max(0,parseInt(this.blogitem.readlength.substring(0,2)) - parseInt((scrolloffset / 500)));
+        return minutes > 1 ? `Nog ${minutes} minuten lezen` : minutes == 1 ? `Nog ${minutes} minuut..` : 'Bijna klaar';
+      }
+
+      _getClassName(scrolloffset){
+        console.log("class call");
+        return "feedbackbar sticky " + (scrolloffset > 435 ? "showtitle":"");
+      }
       _getUrlTwitter() {
-        let tags = this.blogitem.tags.join(',');
-        // ?hashtags=demo&
-        //  original_referer=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftweet-button%2Foverview.html&
-        // ref_src=twsrc%5Etfw&related=twitterapi%2Ctwitter&text=Hello%20world&tw_p=tweetbutton&url=https%3A%2F%2Fexample.com%2Ffoo&via=twitterdev
-        let title = this.blogitem.title.replace(/ /g, "-");
-        return `https://twitter.com/intent/tweet?url=https://www.iconica.nl/blog/${title}&hashtags=${tags}`;
+        if (this.blogitem.tags) {
+          let tags = this.blogitem.tags.join(',');
+          // ?hashtags=demo&
+          //  original_referer=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftweet-button%2Foverview.html&
+          // ref_src=twsrc%5Etfw&related=twitterapi%2Ctwitter&text=Hello%20world&tw_p=tweetbutton&url=https%3A%2F%2Fexample.com%2Ffoo&via=twitterdev
+          let title = this.blogitem.title.replace(/ /g, "-");
+          return `https://twitter.com/intent/tweet?url=https://www.iconica.nl/blog/${title}&hashtags=${tags}`;
+        }
+        return `#`;
+      }
+
+      connectedCallback(){
+        console.log("taaa");
+        window.addEventListener("scroll", function () {
+    console.log("scrolling");
+}, false);
       }
 
       _getUrlFB() {
-        let tags = this.blogitem.tags.join(',');
-        // ?hashtags=demo&
-        //  original_referer=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftweet-button%2Foverview.html&
-        // ref_src=twsrc%5Etfw&related=twitterapi%2Ctwitter&text=Hello%20world&tw_p=tweetbutton&url=https%3A%2F%2Fexample.com%2Ffoo&via=twitterdev
-        let title = this.blogitem.title.replace(/ /g, "-");
-        return `https://www.facebook.com/sharer/sharer.php?u=https://www.iconica.nl/blog/${title}`;
+        if (this.blogitem.tags) {
+          let tags = this.blogitem.tags.join(',');
+          // ?hashtags=demo&
+          //  original_referer=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftweet-button%2Foverview.html&
+          // ref_src=twsrc%5Etfw&related=twitterapi%2Ctwitter&text=Hello%20world&tw_p=tweetbutton&url=https%3A%2F%2Fexample.com%2Ffoo&via=twitterdev
+          let title = this.blogitem.title.replace(/ /g, "-");
+          return `https://www.facebook.com/sharer/sharer.php?u=https://www.iconica.nl/blog/${title}`;
+        }
+        return `#`;
       }
 
       _getUrlLinkedIn() {
-        let tags = this.blogitem.tags.join(',');
-        // ?hashtags=demo&
-        //  original_referer=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftweet-button%2Foverview.html&
-        // ref_src=twsrc%5Etfw&related=twitterapi%2Ctwitter&text=Hello%20world&tw_p=tweetbutton&url=https%3A%2F%2Fexample.com%2Ffoo&via=twitterdev
-        let title = this.blogitem.title.replace(/ /g, "-");
-        return `https://www.linkedin.com/shareArticle?url=https://www.iconica.nl/blog/${title}&title=${title}&mini=true`;
+        if (this.blogitem.tags) {
+          let tags = this.blogitem.tags.join(',');
+          // ?hashtags=demo&
+          //  original_referer=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftweet-button%2Foverview.html&
+          // ref_src=twsrc%5Etfw&related=twitterapi%2Ctwitter&text=Hello%20world&tw_p=tweetbutton&url=https%3A%2F%2Fexample.com%2Ffoo&via=twitterdev
+          let title = this.blogitem.title.replace(/ /g, "-");
+          return `https://www.linkedin.com/shareArticle?url=https://www.iconica.nl/blog/${title}&title=${title}&mini=true`;
+        }
+        return `#`;
       }
 
 
@@ -308,6 +367,12 @@ li:before {
         this.set('blogitem.claps', this.blogitem.claps + 1);
         this.dispatchEvent(new CustomEvent('clap', { detail: { blogitem: this.blogitem }, composed: true, bubbles: true }));
       }
+
+      _sort(){
+        this.set('blogarticles', this.blogarticles.sort((a, b) => a.created < b.created ? 1 : -1));
+        return this.blogarticles;
+      }
+
       _saveComment() {
         let content = this.shadowRoot.querySelector("#comment").value;
         let author = this.shadowRoot.querySelector("#author").value;
