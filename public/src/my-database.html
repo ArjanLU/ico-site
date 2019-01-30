@@ -53,7 +53,7 @@ class IcoDatabase extends Polymer.Element
 
     saveClap(blogitem){
         if (blogitem) {
-            firebase.database().ref("blogs" + blogitem.id).set(blogitem);
+            firebase.database().ref("blogs/blog" + blogitem.id).set(blogitem);
         }
     }
 
