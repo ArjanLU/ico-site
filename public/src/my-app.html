@@ -104,7 +104,7 @@
           <ico-home name="home"></ico-home>
           <ico-diensten name="diensten"></ico-diensten>
           <ico-cases name="cases"></ico-cases>
-          <ico-blog name="blog"  blogcomments="[[blogcomments]]" blogarticles="[[blogarticles]]" on-comment="_saveComment" on-clap="_saveClap" route="{{subroute}}"></ico-blog>
+          <ico-blog name="blog" scrolloffset="[[scrolloffset]]"  blogcomments="[[blogcomments]]" blogarticles="[[blogarticles]]" on-comment="_saveComment" on-clap="_saveClap" route="{{subroute}}"></ico-blog>
           <ico-over-ons name="over-ons"></ico-over-ons>
           <ico-contact name="contact"></ico-contact>
           <ico-vacatures name="vacatures"></ico-vacatures>
@@ -158,11 +158,18 @@
 
       connectedCallback() {
         super.connectedCallback();
+       
+
         // hack to reset the page to rerender the correct iron page from deeplink..
         // dynamically generated iron pages do not respond well to deeplinks
         setTimeout(() => {
           this.page = "";
           this.set('page', this.routeData.page);
+
+          this.$.header.shadowRoot.querySelector("#contentContainer").onscroll = (e) => {
+           this.scrolloffset = e.target.scrollTop; 
+        };
+
         }, 1);
       }
 
